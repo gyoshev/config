@@ -45,12 +45,6 @@ set ruler
 "display incomplete commands
 set showcmd
 
-"disable arrow keys completely
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-
 "use C-s for saving
 noremap <C-S> :w<CR>
 inoremap <C-S> <C-O>:w<CR>
