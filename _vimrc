@@ -1,59 +1,65 @@
 set nocompatible
 
-"completion
-set completeopt=menuone
+" General {
+    set clipboard+=unnamed
+    set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
-"line numbers
-set number
+    " searching
+    set ignorecase
+    set smartcase
+    set incsearch
+    set showmatch
+    set hlsearch
 
-"syntax highlighting
-syntax on
+    " avoid swap, temp and backup files
+    set nobackup
+    set nowritebackup
+    set noswapfile
 
-"using http://www.vim.org/scripts/script.php?script_id=2175
-colorscheme railscasts
+    " always change to the current directory
+    set autochdir
 
-"set the font
-set guifont=Consolas:h12
 
-"tabs
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+    " setup window
+    winpos 0 0
+    set lines=999
+    set columns=999
 
-"indentation
-set autoindent
-set smartindent
-set smarttab
+    " show the cursor position all the time
+    set ruler
 
-"avoid swap, temp and backup files
-set nobackup
-set nowritebackup
-set noswapfile
+    " display incomplete commands
+    set showcmd
+" }
 
-"make backspace work like most other apps
-set backspace=indent,eol,start
+" Keyboard {
+    noremap <C-S> :w<CR>
+    inoremap <C-S> <C-O>:w<CR>
 
-"setup window
-winpos 0 0
-set lines=999
-set columns=999
+    noremap <S-CR> <Esc>
 
-"show the cursor position all the time
-set ruler
+    set backspace=indent,eol,start " make backspace behave consistently with other apps
 
-"display incomplete commands
-set showcmd
+    " show trailing whitespace and delete it with F5
+    nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" }
 
-"use C-s for saving
-noremap <C-S> :w<CR>
-inoremap <C-S> <C-O>:w<CR>
+" Coding {
+    set iskeyword+=_,$,@,%,# 
+    set guifont=Consolas:h10
+    set number
+    syntax on
 
-"searching
-set ignorecase
-set smartcase
-set incsearch
-set showmatch
-set hlsearch
+    colorscheme railscasts " http://www.vim.org/scripts/script.php?script_id=2175
+    set completeopt=menuone
 
-set nocompatible
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+
+    set autoindent
+    set smartindent
+    set smarttab
+" }
+
