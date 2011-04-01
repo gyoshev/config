@@ -53,8 +53,12 @@ set nocompatible
     set guifont=Consolas:h10
     set number
     syntax on
+	
+	call pathogen#runtime_append_all_bundles() 
 
-    colorscheme railscasts " http://www.vim.org/scripts/script.php?script_id=2175
+    set background=dark
+    colorscheme solarized
+
     set completeopt=menuone
 
     set tabstop=4
