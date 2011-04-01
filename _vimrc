@@ -53,8 +53,8 @@ set nocompatible
     set guifont=Consolas:h10
     set number
     syntax on
-	
-	call pathogen#runtime_append_all_bundles() 
+
+    call pathogen#runtime_append_all_bundles() 
 
     set background=dark
     colorscheme solarized
