@@ -42,6 +42,9 @@ set nocompatible
 
     " show trailing whitespace and delete it with F5
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+    " remove search highlight when esc is pressed
+    nnoremap <esc> :noh<return><esc>
     
     " use tab to switch between buffers
     noremap <C-S-tab> :bp<CR>
