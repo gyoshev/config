@@ -1,3 +1,6 @@
 [submodule "vimfiles/bundle/colors-solarized"]
 	path = vimfiles/bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vimfiles/bundle/nerdtree"]
+	path = vimfiles/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
