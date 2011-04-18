@@ -53,6 +53,9 @@ set nocompatible
     " fix syntax highlighting
     noremap <F12> <Esc>:syntax sync fromstart<CR>
     inoremap <F12> <C-o>:syntax sync fromstart<CR>
+
+    " map bclose
+    nmap <C-W>! <Plug>Kwbd
 " }
 
 " Coding {
