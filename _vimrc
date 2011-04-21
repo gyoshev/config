@@ -56,6 +56,9 @@ set nocompatible
 
     " map bclose
     nmap <C-W>! <Plug>Kwbd
+
+    " toggle NerdTree
+    noremap <F3> :NERDTreeToggle
 " }
 
 " Coding {
