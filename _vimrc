@@ -58,7 +58,7 @@ set nocompatible
     nmap <C-W>! <Plug>Kwbd
 
     " toggle NerdTree
-    noremap <F3> :NERDTreeToggle
+    noremap <F3> :NERDTreeToggle<CR>
 " }
 
 " Coding {
@@ -82,5 +82,7 @@ set nocompatible
     set autoindent
     set smartindent
     set smarttab
+
+    filetype plugin on
 " }
 
