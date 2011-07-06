@@ -66,7 +66,6 @@ set nocompatible
 
     call pathogen#runtime_append_all_bundles() 
 
-    set background=dark
     colorscheme railscasts
     autocmd BufEnter * :syntax sync fromstart
 
