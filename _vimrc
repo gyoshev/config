@@ -3,6 +3,7 @@ set nocompatible
 " General {
     set clipboard+=unnamed
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+    set encoding=utf-8
 
     " searching
     set ignorecase
@@ -15,10 +16,6 @@ set nocompatible
     set nobackup
     set nowritebackup
     set noswapfile
-
-    " always change to the current directory
-    set autochdir
-
 
     " setup window
     winpos 0 0
@@ -40,17 +37,17 @@ set nocompatible
 
     set backspace=indent,eol,start " make backspace behave consistently with other apps
 
-    " show trailing whitespace and delete it with F5
+    " delete trailing whitespace with F5
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
     " remove search highlight when esc is pressed
     nnoremap <esc> :noh<return><esc>
-    
+
     " use tab to switch between buffers
     noremap <C-S-tab> :bp<CR>
     noremap <C-tab> :bn<CR>
 
-    " fix syntax highlighting
+    " refresh syntax highlighting on F12
     noremap <F12> <Esc>:syntax sync fromstart<CR>
     inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
@@ -70,7 +67,11 @@ set nocompatible
     call pathogen#runtime_append_all_bundles() 
 
     set background=dark
-    colorscheme solarized
+    colorscheme railscasts
+    autocmd BufEnter * :syntax sync fromstart
+
+    " show trailing whitespace
+    set list listchars=tab:>-,trail:.
 
     set completeopt=menuone
 
