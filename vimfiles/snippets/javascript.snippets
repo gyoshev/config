@@ -1,0 +1,17 @@
+# QUnit test
+snippet qt
+	test('${1:test_name}', function() {
+		${2}
+	});
+# QUnit module
+snippet qmod
+	module('${1:module_name}', {
+		setup: function() {
+			${2}
+		}
+	});
+# module pattern
+snippet mod
+	(function(${1:/* params */}){
+		${2:/* module */}
+	})(${1});
