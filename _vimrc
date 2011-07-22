@@ -27,6 +27,7 @@ set nocompatible
 
     " display incomplete commands
     set showcmd
+    set wildmenu
 " }
 
 " Keyboard {
