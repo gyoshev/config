@@ -65,7 +65,8 @@ set nocompatible
     set number
     syntax on
 
-    call pathogen#runtime_append_all_bundles() 
+    call pathogen#runtime_append_all_bundles()
+    call pathogen#helptags()
 
     colorscheme railscasts
     autocmd BufEnter * :syntax sync fromstart
