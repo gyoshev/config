@@ -65,8 +65,9 @@ set nocompatible
     set number
     syntax on
 
-    call pathogen#runtime_append_all_bundles()
-    call pathogen#helptags()
+    set runtimepath=~/.vim,$VIMRUNTIME
+    source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+    call pathogen#infect()
 
     colorscheme railscasts
     autocmd BufEnter * :syntax sync fromstart

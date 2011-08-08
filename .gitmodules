@@ -19,3 +19,6 @@
 [submodule "vimfiles/bundle/css-color"]
 	path = vimfiles/bundle/css-color
 	url = https://github.com/skammer/vim-css-color
+[submodule "vimfiles/bundle/pathogen"]
+	path = vimfiles/bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
