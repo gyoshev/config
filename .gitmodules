@@ -16,3 +16,6 @@
 [submodule "vimfiles/bundle/gitv"]
 	path = vimfiles/bundle/gitv
 	url = https://github.com/gregsexton/gitv
+[submodule "vimfiles/bundle/css-color"]
+	path = vimfiles/bundle/css-color
+	url = https://github.com/skammer/vim-css-color
