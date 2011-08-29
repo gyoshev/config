@@ -1,4 +1,6 @@
 set nocompatible
+set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
+call vundle#rc()
 
 " General {
     set clipboard+=unnamed
@@ -65,10 +67,6 @@ set nocompatible
     set number
     syntax on
 
-    set runtimepath=~/.vim,$VIMRUNTIME
-    source ~/.vim/bundle/pathogen/autoload/pathogen.vim
-    call pathogen#infect()
-
     colorscheme railscasts
     autocmd BufEnter * :syntax sync fromstart
 
@@ -86,6 +84,18 @@ set nocompatible
     set smartindent
     set smarttab
 
-    filetype plugin on
+"   Plugins {
+        Bundle 'gmarik/vundle'
+
+        Bundle 'tpope/vim-fugitive'
+        Bundle 'skammer/vim-css-color'
+        Bundle 'cespare/vim-bclose.git'
+        Bundle 'scrooloose/nerdtree.git'
+        Bundle 'scrooloose/nerdcommenter'
+        Bundle 'msanders/snipmate.vim.git'
+        Bundle 'gregsexton/gitv'
+"   }
+
+   filetype plugin on
 " }
 
