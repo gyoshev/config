@@ -1,24 +1,24 @@
-[submodule "vimfiles/bundle/nerdtree"]
-	path = vimfiles/bundle/nerdtree
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vimfiles/bundle/fugitive"]
-	path = vimfiles/bundle/fugitive
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vimfiles/bundle/nerdcommenter"]
-	path = vimfiles/bundle/nerdcommenter
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
-[submodule "vimfiles/bundle/bclose"]
-	path = vimfiles/bundle/bclose
+[submodule ".vim/bundle/bclose"]
+	path = .vim/bundle/bclose
 	url = https://github.com/cespare/vim-bclose.git
-[submodule "vimfiles/bundle/snipmate"]
-	path = vimfiles/bundle/snipmate
+[submodule ".vim/bundle/snipmate"]
+	path = .vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
-[submodule "vimfiles/bundle/gitv"]
-	path = vimfiles/bundle/gitv
+[submodule ".vim/bundle/gitv"]
+	path = .vim/bundle/gitv
 	url = https://github.com/gregsexton/gitv
-[submodule "vimfiles/bundle/css-color"]
-	path = vimfiles/bundle/css-color
+[submodule ".vim/bundle/css-color"]
+	path = .vim/bundle/css-color
 	url = https://github.com/skammer/vim-css-color
-[submodule "vimfiles/bundle/pathogen"]
-	path = vimfiles/bundle/pathogen
+[submodule ".vim/bundle/pathogen"]
+	path = .vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
