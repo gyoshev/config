@@ -1,5 +1,4 @@
 " Vim indent file
-<<<<<<< HEAD
 " Language:		JavaScript
 " Author: 		Preston Koprivica (pkopriv2@gmail.com)	
 " URL:
@@ -10,22 +9,10 @@
 
 " Only load one indent script per buffer
 if exists('b:did_indent')
-=======
-" Language:	JavaScript
-" Author:	Robert Kieffer
-" URL:		-
-" Last Change:  2010-03-27 (Happy Birthday, Dash!)
-"
-" Improved JavaScript indent script.
-
-" Indent script in place for this already?
-if exists("b:did_indent")
->>>>>>> 900eec8... structured vimrc, added javascript indent
   finish
 endif
 let b:did_indent = 1
 
-<<<<<<< HEAD
 " Set the global log variable 1 = logging enabled, 0 = logging disabled
 if !exists("g:js_indent_log")
 	let g:js_indent_log = 1
@@ -342,50 +329,3 @@ function! GetJsIndent(lnum)
 	call s:Log("Line didn't match anything.  Retaining indent")
 	return ind
 endfunction
-=======
-setlocal indentexpr=GetJsIndent()
-setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=*/
-
-" Only define functions once per session
-if exists("*GetJsIndent")
-  finish
-endif
-
-" Clean up a line of code by removing trailing '//' comments, and trimming
-" whitespace
-function! Trim(line)
-  return substitute(substitute(a:line, '// .*', '', ''), '^\s*\|\s*$', '', 'g')
-endfunction
-
-function! GetJsIndent()
-  let num = v:lnum
-  let line = Trim(getline(num))
-
-  let pnum = prevnonblank(num - 1)
-  if pnum == 0
-    return 0
-  endif
-  let pline = Trim(getline(pnum))
-
-  let ind = indent(pnum)
-
-  " bracket/brace/paren blocks
-  if pline =~ '[{[(]$'
-    let ind += &sw
-  endif
-  if line =~ '^[}\])]'
-    let ind -= &sw
-  endif
-
-  " '/*' comments
-  if pline =~ '^/\*.*\*/'
-    " no indent for single-line form
-  elseif pline =~ '^/\*'
-    let ind += 1
-  elseif pline =~ '^\*/'
-    let ind -= 1
-  endif
-
-  return ind
-endfunction
->>>>>>> 900eec8... structured vimrc, added javascript indent
