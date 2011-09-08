@@ -1,5 +1,7 @@
 set nocompatible
+filetype off
 set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
+let g:snippets_dir='~/.vim/snippets/'
 call vundle#rc()
 
 " General {
@@ -20,7 +22,6 @@ call vundle#rc()
     set noswapfile
 
     " setup window
-    winpos 0 0
     set lines=999
     set columns=999
 
@@ -54,11 +55,11 @@ call vundle#rc()
     noremap <F12> <Esc>:syntax sync fromstart<CR>
     inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
-    " map bclose
-    nmap <C-W>! <Plug>Kwbd
-
     " toggle NerdTree
     noremap <F3> :NERDTreeToggle<CR>
+
+    " close buffer
+    nmap <C-W>! <Plug>Kwbd
 " }
 
 " Coding {
@@ -96,6 +97,6 @@ call vundle#rc()
         Bundle 'gregsexton/gitv'
 "   }
 
-   filetype plugin on
+    filetype plugin indent on
 " }
 
