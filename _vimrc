@@ -98,5 +98,8 @@ call vundle#rc()
 "   }
 
     filetype plugin indent on
+
+    au FileType gitcommit           setlocal spell
+    au BufRead,BufNewFile *.html    setlocal filetype=html.javascript
 " }
 
