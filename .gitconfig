@@ -1,0 +1,27 @@
+[color]
+    ui = true
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = ~/default-difftool.sh "$LOCAL" "$REMOTE"
+[difftool]
+    prompt = false
+[merge]
+    tool = default-mergetool
+[mergetool "default-mergetool"]
+    cmd = ~/default-mergetool.sh "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+[mergetool]
+    keepBackup = false
+[alias]
+    c = "commit"
+    co = "checkout"
+    br = "branch"
+    s = "status"
+    pr = "pull --rebase"
+[core]
+    autocrlf = input
+    whitespace = cr-at-eol
+[push]
+    default = tracking
+[branch]
+    autosetuprebase = always

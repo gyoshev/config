@@ -21,16 +21,17 @@ call vundle#rc()
     set nowritebackup
     set noswapfile
 
-    " setup window
-    set lines=999
-    set columns=999
-
     " show the cursor position all the time
     set ruler
 
     " display incomplete commands
     set showcmd
     set wildmenu
+
+    " terminal settings
+    set t_Co=256
+    set mouse=a
+    set ttymouse=xterm2
 " }
 
 " Keyboard {
