@@ -35,6 +35,9 @@ call vundle#rc()
 " }
 
 " Keyboard {
+    " change leader
+    let mapleader = ","
+
     noremap <C-S> :w<CR>
     inoremap <C-S> <C-O>:w<CR>
 
@@ -53,11 +56,11 @@ call vundle#rc()
     noremap <C-tab> :bn<CR>
 
     " refresh syntax highlighting on F12
-    noremap <F12> <Esc>:syntax sync fromstart<CR>
-    inoremap <F12> <C-o>:syntax sync fromstart<CR>
+    noremap <leader>[ <Esc>:syntax sync fromstart<CR>
+    inoremap <leader>[ <C-o>:syntax sync fromstart<CR>
 
     " toggle NerdTree
-    noremap <F3> :NERDTreeToggle<CR>
+    noremap <leader>] :NERDTreeToggle<CR>
 
     " close buffer
     nmap <C-W>! <Plug>Kwbd
@@ -96,6 +99,7 @@ call vundle#rc()
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'msanders/snipmate.vim.git'
         Bundle 'gregsexton/gitv'
+        Bundle 'matchit.zip'
 "   }
 
     filetype plugin indent on

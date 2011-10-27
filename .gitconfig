@@ -13,12 +13,21 @@
 [mergetool]
     keepBackup = false
 [alias]
-    c = "commit"
-    co = "checkout"
-    br = "branch"
-    s = "status"
-    pr = "pull --rebase"
-[core]
+    c = commit -m
+    co = checkout
+    a = add
+    d = diff
+    dic = diff --cached
+    pl = pull --rebase
+    ps = push
+    s = status
+    st = status
+    out = log origin..HEAD
+    l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset' --abbrev-commit --date=relative
+    ci = commit
+    ca = commit --amend
+    eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+    au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
     autocrlf = input
     whitespace = cr-at-eol
 [push]
