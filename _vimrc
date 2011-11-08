@@ -5,6 +5,8 @@ let g:snippets_dir='~/.vim/snippets/'
 call vundle#rc()
 
 " General {
+    set hidden
+
     set clipboard+=unnamed
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set encoding=utf-8
@@ -35,9 +37,6 @@ call vundle#rc()
 " }
 
 " Keyboard {
-    " change leader
-    let mapleader = ","
-
     noremap <C-S> :w<CR>
     inoremap <C-S> <C-O>:w<CR>
 
@@ -51,9 +50,11 @@ call vundle#rc()
     " remove search highlight when esc is pressed
     nnoremap <esc> :noh<return><esc>
 
-    " use tab to switch between buffers
+    " use tab to switch between buffers (windows-like)
     noremap <C-S-tab> :bp<CR>
     noremap <C-tab> :bn<CR>
+    noremap <leader><tab> :bp<CR>
+    noremap <leader><S-tab> :bn<CR>
 
     " refresh syntax highlighting on F12
     noremap <leader>[ <Esc>:syntax sync fromstart<CR>
