@@ -63,6 +63,10 @@ call vundle#rc()
     " toggle NerdTree
     noremap <leader>] :NERDTreeToggle<CR>
 
+    " quick-paste last yanked text
+    noremap <C-p> "0p
+    noremap <C-P> "0P
+
     " close buffer
     nmap <C-W>! <Plug>Kwbd
 " }
