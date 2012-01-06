@@ -105,6 +105,7 @@ call vundle#rc()
         Bundle 'msanders/snipmate.vim.git'
         Bundle 'gregsexton/gitv'
         Bundle 'matchit.zip'
+        Bundle 'Command-T'
 "   }
 
     filetype plugin indent on
