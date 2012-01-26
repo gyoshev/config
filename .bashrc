@@ -5,12 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-
 # Disable suspend on <C+s>
 stty -ixon
-
-alias g="git"
 
 term screen-256color
 
@@ -46,5 +42,9 @@ branch_color ()
     fi
     echo -ne $color
 }
+
+if [ -e "$HOME/.aliases" ]; then
+  source "$HOME/.aliases"
+fi
 
 PS1='[\[$(branch_color)\]$(parse_git_branch)\[${c_sgr0}\]] \u@\[${c_red}\]\w\[${c_sgr0}\]: '
