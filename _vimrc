@@ -4,6 +4,21 @@ set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
 let g:snippets_dir='~/.vim/snippets/'
 call vundle#rc()
 
+" Plugins {
+    Bundle 'gmarik/vundle'
+
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'cespare/vim-bclose'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'msanders/snipmate.vim'
+    Bundle 'gregsexton/gitv'
+    Bundle 'vim-scripts/JavaScript-Indent'
+    Bundle 'vim-scripts/Obvious-Mode'
+    Bundle 'ervandew/supertab'
+    Bundle 'wincent/Command-T'
+" }
+
 " General {
     set hidden
 
@@ -45,10 +60,7 @@ call vundle#rc()
     set backspace=indent,eol,start " make backspace behave consistently with other apps
 
     " delete trailing whitespace with F5
-    nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-    " remove search highlight when esc is pressed
-    nnoremap <esc> :noh<return><esc>
+    nnoremap <silent> <leader>q :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
     " use tab to switch between buffers (windows-like)
     noremap <C-S-tab> :bp<CR>
@@ -56,16 +68,18 @@ call vundle#rc()
     noremap <leader><tab> :bp<CR>
     noremap <leader><S-tab> :bn<CR>
 
-    " refresh syntax highlighting on F12
-    noremap <leader>[ <Esc>:syntax sync fromstart<CR>
-    inoremap <leader>[ <C-o>:syntax sync fromstart<CR>
-
     " toggle NerdTree
     noremap <leader>] :NERDTreeToggle<CR>
 
     " quick-paste last yanked text
     noremap <C-p> "0p
     noremap <C-P> "0P
+
+    " indent!
+    nnoremap <Tab> >>
+    nnoremap <S-Tab> <<
+    vnoremap <Tab> >gv
+    vnoremap <S-Tab> <gv
 
     " close buffer
     nmap <C-W>! <Plug>Kwbd
@@ -94,23 +108,10 @@ call vundle#rc()
     set smartindent
     set smarttab
 
-"   Plugins {
-        Bundle 'gmarik/vundle'
-
-        Bundle 'tpope/vim-fugitive'
-        Bundle 'skammer/vim-css-color'
-        Bundle 'cespare/vim-bclose.git'
-        Bundle 'scrooloose/nerdtree.git'
-        Bundle 'scrooloose/nerdcommenter'
-        Bundle 'msanders/snipmate.vim.git'
-        Bundle 'gregsexton/gitv'
-        Bundle 'matchit.zip'
-        Bundle 'Command-T'
-"   }
-
     filetype plugin indent on
 
     au FileType gitcommit           setlocal spell
     au BufRead,BufNewFile *.html    setlocal filetype=html.javascript
+    autocmd BufWritePost ~/github/kendo/src/*.js silent !cd ~/github/kendo && jake merge-scripts > /dev/null 2>&1
 " }
 
