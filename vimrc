@@ -7,6 +7,7 @@ call vundle#rc()
 " Plugins {
     Bundle 'gmarik/vundle'
 
+    Bundle 'Railscasts-Theme-GUIand256color'
     Bundle 'tpope/vim-fugitive'
     Bundle 'cespare/vim-bclose'
     Bundle 'scrooloose/nerdtree'
