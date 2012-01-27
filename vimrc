@@ -17,6 +17,7 @@ call vundle#rc()
     Bundle 'vim-scripts/JavaScript-Indent'
     Bundle 'vim-scripts/Obvious-Mode'
     Bundle 'ervandew/supertab'
+    Bundle 'mileszs/ack.vim'
     Bundle 'wincent/Command-T'
 " }
 
