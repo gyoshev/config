@@ -18,6 +18,7 @@ call vundle#rc()
     Bundle 'vim-scripts/Obvious-Mode'
     Bundle 'ervandew/supertab'
     Bundle 'mileszs/ack.vim'
+    Bundle 'tpope/vim-unimpaired'
     Bundle 'wincent/Command-T'
 " }
 
@@ -63,12 +64,6 @@ call vundle#rc()
 
     " delete trailing whitespace with F5
     nnoremap <silent> <leader>q :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-    " use tab to switch between buffers (windows-like)
-    noremap <C-S-tab> :bp<CR>
-    noremap <C-tab> :bn<CR>
-    noremap <leader><tab> :bp<CR>
-    noremap <leader><S-tab> :bn<CR>
 
     " toggle NerdTree
     noremap <leader>] :NERDTreeToggle<CR>
