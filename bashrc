@@ -9,6 +9,7 @@
 stty -ixon
 
 term screen-256color
+export PATH=/usr/local/git/bin:$PATH
 
 c_cyan=`tput setaf 6`
 c_red=`tput setaf 1`
