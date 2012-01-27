@@ -38,3 +38,6 @@
     default = tracking
 [branch]
     autosetuprebase = always
+[user]
+	name = Alex Gyoshev
+	email = alex@gyoshev.net
