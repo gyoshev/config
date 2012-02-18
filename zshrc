@@ -85,8 +85,8 @@ SAVEHIST=1000
 HISTFILE=~/.history
 setopt APPEND_HISTORY
 
-export PATH=$HOME/.bin/:/usr/local/bin:/usr/local/git/bin:$PATH
-export NODE_PATH=/usr/lib/node_modules/:$NODE_PATH
+export PATH=$HOME/.bin/:/usr/local/sbin:/usr/local/bin:/usr/local/git/bin:$PATH
+export NODE_PATH=/usr/lib/node_modules/:/usr/local/lib/node_modules/:$NODE_PATH
 
 # remap home/end keys that don't work?
 bindkey "^[[1~" beginning-of-line
