@@ -16,7 +16,6 @@ call vundle#rc()
     Bundle 'gregsexton/gitv'
     Bundle 'vim-scripts/JavaScript-Indent'
     Bundle 'vim-scripts/Obvious-Mode'
-    Bundle 'ervandew/supertab'
     Bundle 'mileszs/ack.vim'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'wincent/Command-T'
