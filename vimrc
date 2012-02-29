@@ -108,6 +108,8 @@ call vundle#rc()
 
     au FileType gitcommit           setlocal spell
     au BufRead,BufNewFile *.html    setlocal filetype=html.javascript
+    autocmd BufReadPost *cshtml set filetype=html
+    autocmd BufReadPost Jakefile set filetype=javascript
     autocmd BufWritePost ~/github/kendo/src/*.js silent !cd ~/github/kendo && jake merge-scripts > /dev/null 2>&1
 " }
 
