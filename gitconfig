@@ -3,21 +3,18 @@
     email = alex@gyoshev.net
 [color]
     ui = true
-[diff]
-    tool = default-difftool
-[difftool "default-difftool"]
-    cmd = ~/default-difftool.sh "$LOCAL" "$REMOTE"
 [difftool]
     prompt = false
 [merge]
-    tool = default-mergetool
-[mergetool "default-mergetool"]
-    cmd = ~/default-mergetool.sh "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+    tool = fugitive
+[mergetool "fugitive"]
+    cmd = vim -c \"Gdiff\" \"$MERGED\"
 [mergetool]
     keepBackup = false
 [alias]
     c = commit -m
     co = checkout
+    cp = cherry-pick
     a = add
     d = diff
     dic = diff --cached
@@ -27,10 +24,12 @@
     st = status
     out = log origin..HEAD
     l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)%an%Creset' --abbrev-commit --date=relative
+    cpp = "!git checkout production && git pull --rebase && git cherry-pick master && git push && git checkout master"
     ci = commit
     ca = commit --amend
     eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+    sync = "!git pl && git push"
 [core]
     autocrlf = input
     whitespace = cr-at-eol
@@ -38,6 +37,3 @@
     default = tracking
 [branch]
     autosetuprebase = always
-[user]
-	name = Alex Gyoshev
-	email = alex@gyoshev.net
