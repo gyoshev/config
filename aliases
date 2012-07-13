@@ -1,2 +1,11 @@
 alias g="git"
 alias ll="ls -l"
+
+case `uname -a` in
+    *Linux*)
+        alias ls='ls --color=auto'
+        ;;
+    *Darwin*)
+        alias vim="/usr/local/Cellar/macvim/7.3-64/MacVim.app/Contents/MacOS/Vim"
+        ;;
+esac
