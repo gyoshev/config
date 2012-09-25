@@ -13,19 +13,21 @@ call vundle#rc()
     Bundle 'scrooloose/nerdtree'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'msanders/snipmate.vim'
-    Bundle 'gregsexton/gitv'
     Bundle 'vim-scripts/JavaScript-Indent'
-    Bundle 'vim-scripts/Obvious-Mode'
     Bundle 'mileszs/ack.vim'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'wincent/Command-T'
+
+    set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+    set laststatus=2
+    Bundle 'Lokaltog/vim-powerline'
+    let g:Powerline_symbols = 'fancy'
 " }
 
 " General {
     set hidden
 
     set clipboard+=unnamed
-    set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set encoding=utf-8
 
     " searching
