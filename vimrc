@@ -12,6 +12,7 @@ call vundle#rc()
     Bundle 'cespare/vim-bclose'
     Bundle 'scrooloose/nerdtree'
     Bundle 'scrooloose/nerdcommenter'
+    Bundle 'groenewege/vim-less'
     Bundle 'msanders/snipmate.vim'
     Bundle 'vim-scripts/JavaScript-Indent'
     Bundle 'mileszs/ack.vim'
@@ -94,6 +95,9 @@ call vundle#rc()
 
     " show trailing whitespace
     set list listchars=tab:>-,trail:.
+
+    " ignore binaries and artifacts
+    set wildignore=*.o,*.obj,*.bin,*.dll
 
     set completeopt=menuone
 
