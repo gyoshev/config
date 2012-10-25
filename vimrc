@@ -8,18 +8,25 @@ call vundle#rc()
     Bundle 'gmarik/vundle'
 
     Bundle 'Railscasts-Theme-GUIand256color'
-    Bundle 'tpope/vim-fugitive'
     Bundle 'cespare/vim-bclose'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'scrooloose/nerdcommenter'
     Bundle 'groenewege/vim-less'
     Bundle 'msanders/snipmate.vim'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'scrooloose/nerdtree'
     Bundle 'vim-scripts/JavaScript-Indent'
+
     Bundle 'mileszs/ack.vim'
+
+    Bundle 'tpope/vim-fugitive'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-ragtag'
+    let g:ragtag_global_maps = 1
+
     Bundle 'kien/ctrlp.vim'
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\dist$',
+      \ }
 
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set laststatus=2
@@ -100,7 +107,10 @@ call vundle#rc()
     set list listchars=tab:>-,trail:.
 
     " ignore binaries and artifacts
-    set wildignore=*.o,*.obj,*.bin,*.dll
+    set wildignore=*.o,*.obj,*.bin,*.dll,*.zip
+    " exclude version control directories
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+    set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*
 
     set completeopt=menuone
 
