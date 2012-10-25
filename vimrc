@@ -17,11 +17,15 @@ call vundle#rc()
     Bundle 'vim-scripts/JavaScript-Indent'
     Bundle 'mileszs/ack.vim'
     Bundle 'tpope/vim-unimpaired'
+    Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-ragtag'
     Bundle 'kien/ctrlp.vim'
+
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set laststatus=2
     Bundle 'Lokaltog/vim-powerline'
     let g:Powerline_symbols = 'fancy'
+    Bundle 'Lokaltog/vim-easymotion'
 " }
 
 " General {
