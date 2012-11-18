@@ -100,7 +100,7 @@ call vundle#rc()
     set number
     syntax on
 
-    colorscheme railscasts
+    silent! colorscheme railscasts
     autocmd BufEnter * :syntax sync fromstart
 
     " show trailing whitespace
