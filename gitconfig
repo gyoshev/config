@@ -18,7 +18,7 @@
     a = add
     d = diff
     dic = diff --cached
-    pl = pull --rebase
+    pl = "!f() { git fetch; git rebase --keep-empty origin/`git rev-parse --abbrev-ref HEAD` ; }; f"
     ps = push
     s = status
     st = status
