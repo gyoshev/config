@@ -90,6 +90,9 @@ call vundle#rc()
     vnoremap <Tab> >gv
     vnoremap <S-Tab> <gv
 
+    " tag auto-close with c-space
+    imap <C-Space> <C-X><C-O>
+
     " close buffer
     nmap <C-W>! <Plug>Kwbd
 " }
