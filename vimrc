@@ -13,7 +13,7 @@ set nocompatible
 
 filetype off
 set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
-let g:snippets_dir='~/.vim/snippets/'
+let g:snippets_dir='~/.snippets/'
 call vundle#rc()
 
 " Plugins {
