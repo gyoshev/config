@@ -1,4 +1,16 @@
 set nocompatible
+
+" Vundle Install {
+  if !isdirectory(expand('$HOME/.vim/bundle/vundle/.git', 1))
+    silent ! git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    if v:shell_error
+      finish
+    else
+      silent ! vim +BundleInstall +qall
+    endif
+  endif
+" }
+
 filetype off
 set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
 let g:snippets_dir='~/.vim/snippets/'
@@ -83,6 +95,9 @@ call vundle#rc()
     " quick-paste last yanked text
     noremap <C-p> "0p
     noremap <C-P> "0P
+
+    " center screen
+    noremap <Space> zz
 
     " indent!
     nnoremap <Tab> >>
