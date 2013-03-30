@@ -86,7 +86,7 @@ HISTFILE=~/.history
 setopt APPEND_HISTORY
 
 export PATH=$HOME/.bin:/usr/local/sbin:/usr/local/bin:/usr/local/git/bin:/home/gyoshev/.gem/ruby/1.9.1/bin:/usr/local/share/npm/bin:$PATH
-export NODE_PATH=/usr/lib/node_modules/:/usr/local/lib/node_modules/:$NODE_PATH
+export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
 
 # remap home/end keys that don't work?
 bindkey "^[[1~" beginning-of-line
@@ -95,3 +95,5 @@ bindkey "^[[3~" delete-char
 bindkey "^[[4~" end-of-line
 bindkey "^[[5~" beginning-of-history
 bindkey "^[[6~" end-of-history
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
