@@ -3,6 +3,8 @@
     email = alex@gyoshev.net
 [color]
     ui = true
+[diff]
+    algorithm = patience
 [difftool]
     prompt = false
 [merge]
