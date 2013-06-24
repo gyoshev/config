@@ -40,6 +40,17 @@ call vundle#rc()
       \ 'dir':  '\v[\/]\dist$',
       \ }
 
+    let g:ctrlp_cmd = 'call CallCtrlP()'
+
+    func! CallCtrlP()
+        if exists('s:called_ctrlp')
+            CtrlPLastMode
+        else
+            let s:called_ctrlp = 1
+            CtrlPMRU
+        endif
+    endfunc
+
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set laststatus=2
     Bundle 'Lokaltog/vim-powerline'
