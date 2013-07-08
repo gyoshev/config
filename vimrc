@@ -11,6 +11,16 @@ set nocompatible
   endif
 " }
 
+" Tern Install {
+  let tern_dir = expand('$HOME/.vim/bundle/tern_for_vim', 1)
+  let cwd = getcwd()
+  if !isdirectory(tern_dir . '/node_modules')
+    execute "cd " . tern_dir
+    silent ! npm install
+    execute "cd " . cwd
+  endif
+" }
+
 filetype off
 set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
 let g:snippets_dir='~/.snippets/'
@@ -26,6 +36,7 @@ call vundle#rc()
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'scrooloose/nerdtree'
     Bundle 'vim-scripts/JavaScript-Indent'
+    Bundle 'marijnh/tern_for_vim'
 
     Bundle 'mileszs/ack.vim'
 
