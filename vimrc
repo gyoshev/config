@@ -35,8 +35,10 @@ call vundle#rc()
     Bundle 'msanders/snipmate.vim'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'scrooloose/nerdtree'
-    Bundle 'vim-scripts/JavaScript-Indent'
+    Bundle 'jelera/vim-javascript-syntax'
+    Bundle 'pangloss/vim-javascript'
     Bundle 'marijnh/tern_for_vim'
+    Bundle 'rosenfeld/conque-term'
 
     Bundle 'mileszs/ack.vim'
 
@@ -121,13 +123,16 @@ call vundle#rc()
     " center screen
     noremap <Space> zz
 
+    " open file from same dir
+    map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
+
     " indent!
     nnoremap <Tab> >>
     nnoremap <S-Tab> <<
     vnoremap <Tab> >gv
     vnoremap <S-Tab> <gv
 
-    " tag auto-close with c-space
+    " easier omni-complete
     imap <C-Space> <C-X><C-O>
 
     " close buffer
