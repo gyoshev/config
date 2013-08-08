@@ -1,6 +1,6 @@
 alias g="git"
 alias ll="ls -l"
-alias kgrep="grep -Iir --exclude='*.min.js' --exclude='kendo.all.js' --exclude='kendo.winjs.js' --exclude='*.web.*' --exclude='*.mobile.js' --exclude='kendo.editor.js' --exclude='kendo.dataviz.js'"
+alias kgrep="grep -Iir --exclude='*.min.css' --exclude='*.min.js' --exclude='kendo.all.js' --exclude='kendo.winjs.js' --exclude='*.web.*' --exclude='*.mobile.js' --exclude='kendo.editor.js' --exclude='kendo.dataviz.js'"
 
 case `uname -a` in
     *Linux*)
