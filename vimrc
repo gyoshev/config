@@ -43,6 +43,7 @@ call vundle#rc()
     Bundle 'mileszs/ack.vim'
 
     Bundle 'tpope/vim-fugitive'
+    Bundle 'tpope/vim-git'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-ragtag'
@@ -127,6 +128,8 @@ call vundle#rc()
     nnoremap <S-Tab> <<
     vnoremap <Tab> >gv
     vnoremap <S-Tab> <gv
+
+    nnoremap <F8> :setlocal spell! spell?<CR>
 
     " easier omni-complete
     imap <C-Space> <C-X><C-O>
