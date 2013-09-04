@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 cutstring="DO NOT EDIT BELOW THIS LINE"
 
@@ -6,12 +6,12 @@ for name in *; do
   target="$HOME/.$name"
   if [ -e $target ]; then
     if [ ! -L $target ]; then
-      cutline=`grep -n -m1 "$cutstring" "$target" | sed "s/:.*//"`
+      cutline=`grep -n "$cutstring" "$target" | sed "s/:.*//"`
       if [[ -n $cutline ]]; then
         let "cutline = $cutline - 1"
         echo "Updating $target"
         head -n $cutline "$target" > update_tmp
-        startline=`cat -n "$name" | sort -nr | cut -c8- | grep -n -m1 "$cutstring" | sed "s/:.*//"`
+        startline=`cat -n "$name" | sort -nr | cut -c8- | grep -n "$cutstring" | sed "s/:.*//"`
         if [[ -n $startline ]]; then
           tail -n $startline "$name" >> update_tmp
         else
@@ -33,9 +33,3 @@ for name in *; do
     fi
   fi
 done
-
-if [ ! -d "$HOME/.vim/bundle" ]; then
-    echo "Installing vundle"
-    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    mkdir -p ~/.vim/backup
-fi
