@@ -1,8 +1,9 @@
 set nocompatible
 
 " Vundle Install {
-  if !isdirectory(expand('$HOME/.vim/bundle/vundle/.git', 1))
-    silent ! git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  let home_dir = expand('$HOME')
+  if !isdirectory(expand(home_dir . '/.vim/bundle/vundle/.git', 1))
+    execute "! git clone https://github.com/gmarik/vundle.git " . home_dir . "/.vim/bundle/vundle"
     if v:shell_error
       finish
     else
@@ -12,7 +13,7 @@ set nocompatible
 " }
 
 " Tern Install {
-  let tern_dir = expand('$HOME/.vim/bundle/tern_for_vim', 1)
+  let tern_dir = expand(home_dir . '/.vim/bundle/tern_for_vim', 1)
   let cwd = getcwd()
   if !isdirectory(tern_dir . '/node_modules')
     execute "cd " . tern_dir

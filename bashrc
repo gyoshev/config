@@ -9,7 +9,11 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
-[[ $OSTYPE == 'msys' ]] && return
+if [[ $OSTYPE == 'msys' ]]; then
+  eval `ssh-agent`
+  ssh-add
+  return 
+fi
 
 # Disable suspend on <C+s>
 stty -ixon

@@ -27,7 +27,7 @@
     st = status
     out = log origin..HEAD
     l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)%an%Creset' --abbrev-commit --date=relative
-    pl = "!f() { git fetch; git rebase --keep-empty origin/`git current` ; }; f"
+    pl = "! git fetch; git rebase --keep-empty origin/`git current`"
     sync = "!git pl && git push"
     cpp = "!git checkout production && git pull --rebase && git cherry-pick master && git push && git checkout master"
     eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
