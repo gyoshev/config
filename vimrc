@@ -40,6 +40,7 @@ call vundle#rc()
     Bundle 'pangloss/vim-javascript'
     Bundle 'marijnh/tern_for_vim'
     Bundle 'rosenfeld/conque-term'
+    Bundle 'vim-scripts/YankRing.vim'
 
     Bundle 'mileszs/ack.vim'
 
@@ -123,6 +124,11 @@ call vundle#rc()
 
     " open file from same dir
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
+    map <leader>vsw :vs <C-R>=expand("%:h") . "/" <CR>
+
+    " search in yank ring
+    nnoremap <leader><Space> :YRShow<CR>
+    inoremap <leader><Space> :YRShow<CR>
 
     " indent!
     nnoremap <Tab> >>
