@@ -36,14 +36,14 @@ call vundle#rc()
     Bundle 'msanders/snipmate.vim'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'scrooloose/nerdtree'
-    Bundle 'jelera/vim-javascript-syntax'
     Bundle 'pangloss/vim-javascript'
     Bundle 'marijnh/tern_for_vim'
     Bundle 'rosenfeld/conque-term'
     Bundle 'vim-scripts/YankRing.vim'
-
     Bundle 'mileszs/ack.vim'
+    Bundle 'editorconfig/editorconfig-vim'
 
+    " tpope is an icon!
     Bundle 'tpope/vim-fugitive'
     Bundle 'tpope/vim-git'
     Bundle 'tpope/vim-unimpaired'
@@ -136,7 +136,11 @@ call vundle#rc()
     vnoremap <Tab> >gv
     vnoremap <S-Tab> <gv
 
+    " toggle spell
     nnoremap <F8> :setlocal spell! spell?<CR>
+
+    " when you forget to open with sudo...
+    cmap w!! w !sudo tee > /dev/null %
 
     " easier omni-complete
     imap <C-Space> <C-X><C-O>
