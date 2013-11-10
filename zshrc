@@ -80,8 +80,8 @@ setopt prompt_subst
 setopt histignoredups
 
 setopt share_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.history
 setopt APPEND_HISTORY
 
@@ -96,8 +96,6 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[5~" beginning-of-history
 bindkey "^[[6~" end-of-history
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 # optimize ruby startup time
 export RUBY_HEAP_MIN_SLOTS=800000
 export RUBY_HEAP_FREE_MIN=100000
@@ -107,3 +105,8 @@ export RUBY_GC_MALLOC_LIMIT=79000000
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+if which rbenv > /dev/null; then
+    export RBENV_ROOT=/usr/local/var/rbenv
+    eval "$(rbenv init -)";
+fi

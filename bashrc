@@ -55,5 +55,3 @@ branch_color ()
 }
 
 PS1='[\[$(branch_color)\]$(parse_git_branch)\[${c_sgr0}\]] \u@\[${c_red}\]\w\[${c_sgr0}\]: '
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
