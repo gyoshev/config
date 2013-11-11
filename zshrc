@@ -1,13 +1,6 @@
 autoload -U colors
 autoload -U compinit
 
-git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    echo "%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}"
-  fi
-}
-
 # makes color constants available
 colors
 
@@ -18,8 +11,9 @@ export CLICOLOR=1
 setopt prompt_subst
 
 # prompt
+source ~/.zsh/git-prompt/zshrc.sh
 export PS1='%{$fg_bold[blue]%}(~)%{$reset_color%} '
-export RPROMPT='${SSH_CONNECTION+"%{$fg_bold[green]%}"}%{$fg_bold[white]%}%~%{$reset_color%} -- $(git_prompt_info)'
+export RPROMPT='${SSH_CONNECTION+"%{$fg_bold[green]%}"}%{$fg_bold[white]%}%~%{$reset_color%} -- $(git_super_status)'
 
 
 if [ -n "$DISPLAY" ]; then
