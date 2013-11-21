@@ -40,7 +40,10 @@ call vundle#rc()
     Bundle 'marijnh/tern_for_vim'
     Bundle 'rosenfeld/conque-term'
     Bundle 'vim-scripts/YankRing.vim'
+
     Bundle 'mileszs/ack.vim'
+    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+
     Bundle 'editorconfig/editorconfig-vim'
 
     " tpope is an icon!
