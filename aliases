@@ -7,6 +7,6 @@ case `uname -a` in
         alias ls='ls --color=auto'
         ;;
     *Darwin*)
-        alias vim="/usr/local/Cellar/macvim/7.3-64/MacVim.app/Contents/MacOS/Vim"
+        alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
         ;;
 esac
