@@ -129,6 +129,9 @@ call vundle#rc()
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
     map <leader>vsw :vs <C-R>=expand("%:h") . "/" <CR>
 
+    " run tests via jasmine
+    map <leader>t :wa \|! jasmine-node *.spec.js --noColor <CR>
+
     " search in yank ring
     nnoremap <leader><Space> :YRShow<CR>
     inoremap <leader><Space> :YRShow<CR>
