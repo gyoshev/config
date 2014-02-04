@@ -27,12 +27,41 @@
     st = status
     out = log origin..HEAD
     l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)%an%Creset' --abbrev-commit --date=relative
+
+    # pull --rebase, and persist merge commits
     pl = "!f() { git fetch --prune; git rebase --preserve-merges origin/`git current` ; }; f"
+
     sync = "!f() { git pl && git push ; }; f"
+
+    # cherry-pick to production
     cpp = "!git checkout production && git pull --rebase && git cherry-pick master && git push && git checkout master"
+
+    # edit / add unmerged files
     eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+    # show parent (mommy) branch
     mom = "!git show-branch | ack '\\*' | ack -v \"`git current`\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//'"
+
+    #############################
+    # public/private mirrors aliases
+    #############################
+
+    # bring commits from public repo to private
+    put-in-master = "!git checkout master && git pull --rebase && git cherry-pick core/master && git push && git checkout core-master"
+
+    # drop cherry-picks of private files
+    drop-deleted-by-us = "!git rm `git status --porcelain | grep ^DU | cut -d' ' -f2`"
+
+    # update private marker after all commits are ported from public to private
+    updated-core-tag = "!git tag -f r-private core/master && git push -f core r-private;"
+
+    # update public marker after all commits are ported from private to public
+    updated-master-tag = "!git tag -f r-public origin/master && git push -f origin r-public;"
+
+    # skip a cherry-pick in progress
+    skip-cherry = "!git reset; git cherry-pick --continue"
+
 [core]
     autocrlf = input
     whitespace = cr-at-eol
