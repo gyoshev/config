@@ -20,6 +20,7 @@
     co = checkout
     cp = cherry-pick
     current = rev-parse --abbrev-ref HEAD
+    tracked = rev-parse --abbrev-ref --symbolic-full-name @{u}
     a = add
     d = diff
     dic = diff --cached
@@ -29,7 +30,7 @@
     l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)%an%Creset' --abbrev-commit --date=relative
 
     # pull --rebase, and persist merge commits
-    pl = "!f() { git fetch --prune; git rebase --preserve-merges origin/`git current` ; }; f"
+    pl = "!f() { git fetch --prune; git rebase --preserve-merges `git tracked` ; }; f"
 
     sync = "!f() { git pl && git push ; }; f"
 
