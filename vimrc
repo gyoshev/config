@@ -176,8 +176,10 @@ call vundle#rc()
         execute 'colorscheme ' . g:colors_name
       endif
     endfunc
+
     nnoremap <F1> :call ToggleFocusMode()<cr>
 
+if has("python")
 python << EOL
 import vim
 def EvaluateCurrentRange():
@@ -185,6 +187,7 @@ def EvaluateCurrentRange():
 EOL
 
     map <C-h> :py EvaluateCurrentRange()<CR>
+endif
 " }
 
 " Coding {
