@@ -72,7 +72,7 @@ if ! (tmux has-session -t "$SESSION" >/dev/null 2>&1); then
 fi
 
 if [ -z "$TMUX" ]; then
-  tmux attach -t "$SESSION"
+  tmux -2 attach -t "$SESSION"
 else
-  tmux switch-client -t "$SESSION"
+  tmux -2 switch-client -t "$SESSION"
 fi
