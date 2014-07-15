@@ -29,13 +29,19 @@
     out = log origin..HEAD
     l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)%an%Creset' --abbrev-commit --date=relative
 
-    # pull --rebase, and persist merge commits
+    # pull --rebase, and preserve merge commits
     pl = "!f() { git fetch --prune; git rebase --preserve-merges `git tracked` ; }; f"
 
     sync = "!f() { git pl && git push ; }; f"
 
-    # cherry-pick to production
-    cpp = "!git checkout production && git pull --rebase && git cherry-pick master && git push && git checkout master"
+    # cherry-pick from ... to ...
+    cpf2 = "!f() { git checkout $2 && git pull --rebase && git cherry-pick $1 && git push && git checkout $1 ; }; f"
+
+    # cherry-pick from current to ....
+    cp2 = "!f() { git cpf2 `git current` $1 ; }; f"
+
+    # cherry-pick from master to production
+    cpp = "!f() { git cpf2 master production ; }; f"
 
     # edit / add unmerged files
     eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
