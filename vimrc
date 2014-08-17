@@ -75,6 +75,8 @@ call vundle#rc()
     Bundle 'Lokaltog/vim-powerline'
     let g:Powerline_symbols = 'fancy'
     Bundle 'Lokaltog/vim-easymotion'
+
+    Bundle 'epeli/slimux'
 " }
 
 " General {
@@ -178,6 +180,13 @@ call vundle#rc()
     endfunc
 
     nnoremap <F1> :call ToggleFocusMode()<cr>
+
+    " REPL evaluation
+    map <Leader>s :SlimuxREPLSendLine<CR>
+    vmap <Leader>s :SlimuxREPLSendSelection<CR>
+    map <Leader>a :SlimuxShellLast<CR>
+    map <Leader>k :SlimuxSendKeysLast<CR>
+    map <Leader>S :%SlimuxREPLSendSelection<CR>
 
 if has("python")
 python << EOL
