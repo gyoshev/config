@@ -16,12 +16,25 @@ snippet qmod
 		teardown: function() {
 		}
 	});
+# Jasmine module
+snippet desc
+	describe("${1:module}", function() {
+		${2}
+	});
+# Jasmine test
+snippet it
+	it("${1:description}", function() {
+		${2}
+	});
 # Function
 snippet f
 	function(${1}) {${2}}
 # Log to console
 snippet con
 	console.log(${1});
+# Log to console, JSON stingified
+snippet conj
+	console.log(JSON.stringify(${1}, null, 2));
 # grunt task
 snippet gt
 	grunt.registerTask('${1}', function() {

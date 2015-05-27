@@ -31,7 +31,7 @@ call vundle#rc()
     Bundle 'gmarik/vundle'
 
     Bundle 'Railscasts-Theme-GUIand256color'
-    Bundle 'cespare/vim-bclose'
+    Bundle 'moll/vim-bbye'
     Bundle 'groenewege/vim-less'
     Bundle 'msanders/snipmate.vim'
     Bundle 'scrooloose/nerdcommenter'
@@ -52,6 +52,8 @@ call vundle#rc()
     Bundle 'tpope/vim-unimpaired'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-ragtag'
+    Bundle 'tpope/vim-fireplace'
+    Bundle 'tpope/vim-sexp-mappings-for-regular-people'
     let g:ragtag_global_maps = 1
 
     Bundle 'kien/ctrlp.vim'
@@ -76,7 +78,7 @@ call vundle#rc()
     let g:Powerline_symbols = 'fancy'
     Bundle 'Lokaltog/vim-easymotion'
 
-    Bundle 'epeli/slimux'
+    Bundle 'guns/vim-sexp'
 " }
 
 " General {
@@ -111,6 +113,8 @@ call vundle#rc()
 " }
 
 " Keyboard {
+    let mapleader=","
+
     noremap <C-S> :w<CR>
     inoremap <C-S> <C-O>:w<CR>
 
@@ -154,7 +158,7 @@ call vundle#rc()
     imap <C-Space> <C-X><C-O>
 
     " close buffer
-    nmap <C-W>! <Plug>Kwbd
+    nmap <leader>q :Bdelete<CR>
 
     " focus mode
     function! ToggleFocusMode()
