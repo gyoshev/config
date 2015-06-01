@@ -39,7 +39,6 @@ call vundle#rc()
     Bundle 'pangloss/vim-javascript'
     Bundle 'marijnh/tern_for_vim'
     Bundle 'rosenfeld/conque-term'
-    Bundle 'vim-scripts/YankRing.vim'
 
     Bundle 'mileszs/ack.vim'
     let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
@@ -52,30 +51,28 @@ call vundle#rc()
     Bundle 'tpope/vim-unimpaired'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-ragtag'
-    Bundle 'tpope/vim-fireplace'
     Bundle 'tpope/vim-sexp-mappings-for-regular-people'
+    Bundle 'tpope/vim-leiningen'
+    Bundle 'tpope/vim-projectionist'
+    Bundle 'tpope/vim-dispatch'
+    Bundle 'tpope/vim-fireplace'
     let g:ragtag_global_maps = 1
 
     Bundle 'kien/ctrlp.vim'
-    let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\dist$',
-      \ }
 
-    let g:ctrlp_cmd = 'call CallCtrlP()'
+    " show last mode
+    let g:ctrlp_cmd = 'CtrlPLastMode'
 
-    func! CallCtrlP()
-        if exists('s:called_ctrlp')
-            CtrlPLastMode
-        else
-            let s:called_ctrlp = 1
-            CtrlPMRU
-        endif
-    endfunc
+    " use ag if available
+    if executable('ag')
+       set grepprg=ag\ --nogroup\ --nocolor
+       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+       let g:ctrlp_use_caching = 0
+    endif
 
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set laststatus=2
     Bundle 'Lokaltog/vim-powerline'
-    let g:Powerline_symbols = 'fancy'
     Bundle 'Lokaltog/vim-easymotion'
 
     Bundle 'guns/vim-sexp'
@@ -126,7 +123,7 @@ call vundle#rc()
     nnoremap <silent> <leader>q :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
     " toggle NerdTree
-    noremap <leader>] :NERDTreeToggle<CR>
+    noremap <leader>n :NERDTreeToggle<CR>
 
     " center screen
     noremap <Space> zz
@@ -138,10 +135,6 @@ call vundle#rc()
     " run tests via jasmine
     map <leader>t :wa \|! jasmine-node *.spec.js --noColor <CR>
 
-    " search in yank ring
-    nnoremap <leader><Space> :YRShow<CR>
-    inoremap <leader><Space> :YRShow<CR>
-
     " indent!
     nnoremap <Tab> >>
     nnoremap <S-Tab> <<
@@ -151,7 +144,11 @@ call vundle#rc()
     " toggle spell
     nnoremap <F8> :setlocal spell! spell?<CR>
 
-    " when you forget to open with sudo...
+    " toggle paste
+    nnoremap <F9> :set invpaste paste?<CR>
+    set pastetoggle=<F9>
+
+    " sudo write
     cmap w!! w !sudo tee > /dev/null %
 
     " easier omni-complete
@@ -159,6 +156,9 @@ call vundle#rc()
 
     " close buffer
     nmap <leader>q :Bdelete<CR>
+
+    " eval buffer
+    nmap <leader>eb :%Eval<CR>
 
     " focus mode
     function! ToggleFocusMode()
