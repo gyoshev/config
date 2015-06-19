@@ -121,14 +121,11 @@ call vundle#rc()
 
     set backspace=indent,eol,start " make backspace behave consistently with other apps
 
-    " delete trailing whitespace with F5
-    nnoremap <silent> <leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+    " delete trailing whitespace
+    nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
     " toggle NerdTree
     noremap <leader>n :NERDTreeToggle<CR>
-
-    " center screen
-    noremap <Space> zz
 
     " open file from same dir
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
