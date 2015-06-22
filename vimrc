@@ -28,37 +28,39 @@ let g:snippets_dir='~/.snippets/'
 call vundle#rc()
 
 " Plugins {
-    Bundle 'gmarik/vundle'
+    Plugin 'gmarik/vundle'
 
-    Bundle 'Railscasts-Theme-GUIand256color'
-    Bundle 'moll/vim-bbye'
-    Bundle 'groenewege/vim-less'
-    Bundle 'msanders/snipmate.vim'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'pangloss/vim-javascript'
-    Bundle 'marijnh/tern_for_vim'
-    Bundle 'rosenfeld/conque-term'
+    Plugin 'Railscasts-Theme-GUIand256color'
+    Plugin 'moll/vim-bbye'
+    Plugin 'groenewege/vim-less'
+    Plugin 'msanders/snipmate.vim'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'marijnh/tern_for_vim'
+    Plugin 'rosenfeld/conque-term'
 
-    Bundle 'mileszs/ack.vim'
+    Plugin 'mileszs/ack.vim'
     let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
-    Bundle 'editorconfig/editorconfig-vim'
+    Plugin 'editorconfig/editorconfig-vim'
+
+    Plugin 'mattn/emmet-vim'
 
     " tpope is an icon!
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-git'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-ragtag'
-    Bundle 'tpope/vim-sexp-mappings-for-regular-people'
-    Bundle 'tpope/vim-leiningen'
-    Bundle 'tpope/vim-projectionist'
-    Bundle 'tpope/vim-dispatch'
-    Bundle 'tpope/vim-fireplace'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-git'
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-ragtag'
+    Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+    Plugin 'tpope/vim-leiningen'
+    Plugin 'tpope/vim-projectionist'
+    Plugin 'tpope/vim-dispatch'
+    Plugin 'tpope/vim-fireplace'
     let g:ragtag_global_maps = 1
 
-    Bundle 'kien/ctrlp.vim'
+    Plugin 'kien/ctrlp.vim'
 
     " show last mode
     let g:ctrlp_cmd = 'CtrlPLastMode'
@@ -72,10 +74,10 @@ call vundle#rc()
 
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set laststatus=2
-    Bundle 'Lokaltog/vim-powerline'
-    Bundle 'Lokaltog/vim-easymotion'
+    Plugin 'Lokaltog/vim-powerline'
+    Plugin 'Lokaltog/vim-easymotion'
 
-    Bundle 'guns/vim-sexp'
+    Plugin 'guns/vim-sexp'
 " }
 
 " General {
@@ -120,7 +122,7 @@ call vundle#rc()
     set backspace=indent,eol,start " make backspace behave consistently with other apps
 
     " delete trailing whitespace with F5
-    nnoremap <silent> <leader>q :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+    nnoremap <silent> <leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
     " toggle NerdTree
     noremap <leader>n :NERDTreeToggle<CR>
