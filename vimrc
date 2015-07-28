@@ -41,9 +41,9 @@ call vundle#rc()
     Plugin 'rosenfeld/conque-term'
 
     Plugin 'mileszs/ack.vim'
-    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
     Plugin 'editorconfig/editorconfig-vim'
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
     Plugin 'mattn/emmet-vim'
 
@@ -67,9 +67,9 @@ call vundle#rc()
 
     " use ag if available
     if executable('ag')
+       let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
        set grepprg=ag\ --nogroup\ --nocolor
        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-       let g:ctrlp_use_caching = 0
     endif
 
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
