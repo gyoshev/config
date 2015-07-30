@@ -36,10 +36,12 @@ call vundle#rc()
     Plugin 'msanders/snipmate.vim'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/syntastic'
+    let g:syntastic_javascript_checkers = ["jshint"]
+
     Plugin 'pangloss/vim-javascript'
     Plugin 'marijnh/tern_for_vim'
     Plugin 'rosenfeld/conque-term'
-
     Plugin 'mileszs/ack.vim'
 
     Plugin 'editorconfig/editorconfig-vim'
@@ -63,7 +65,17 @@ call vundle#rc()
     Plugin 'kien/ctrlp.vim'
 
     " show last mode
-    let g:ctrlp_cmd = 'CtrlPLastMode'
+    let g:ctrlp_cmd = 'call CallCtrlP()'
+
+    func! CallCtrlP()
+        " use mru as first ctrlp mode
+        if exists('s:called_ctrlp')
+            CtrlPLastMode
+        else
+            let s:called_ctrlp = 1
+            CtrlPMRU
+        endif
+    endfunc
 
     " use ag if available
     if executable('ag')
@@ -203,7 +215,7 @@ endif
 " }
 
 " Coding {
-    set iskeyword+=_,$,@,%,# 
+    set iskeyword+=_,$,@,%,#
     set guifont=Consolas:h10
     set number
     syntax on
