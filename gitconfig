@@ -76,3 +76,5 @@
     default = tracking
 [branch]
     autosetuprebase = always
+[commit]
+    template = ~/.gitmessage
