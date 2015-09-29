@@ -34,6 +34,8 @@
 
     sync = "!f() { git pl && git push ; }; f"
 
+    stash-sync = "!f() { git stash && git sync && git stash pop ; }; f"
+
     # cherry-pick from ... to ...
     cpf2 = "!f() { git checkout $2 && git pull --rebase && git cherry-pick $1 && git push && git checkout $1 ; }; f"
 
