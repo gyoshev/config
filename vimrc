@@ -38,6 +38,8 @@ call vundle#rc()
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
     let g:syntastic_javascript_checkers = ["jshint"]
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 1
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'marijnh/tern_for_vim'
@@ -60,6 +62,7 @@ call vundle#rc()
     Plugin 'tpope/vim-projectionist'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-fireplace'
+    Plugin 'tpope/vim-eunuch'
     let g:ragtag_global_maps = 1
 
     Plugin 'kien/ctrlp.vim'
@@ -77,6 +80,8 @@ call vundle#rc()
         endif
     endfunc
 
+    Plugin 'junegunn/goyo.vim'
+
     " use ag if available
     if executable('ag')
        let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
@@ -85,11 +90,17 @@ call vundle#rc()
     endif
 
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
     set laststatus=2
     Plugin 'Lokaltog/vim-powerline'
     Plugin 'Lokaltog/vim-easymotion'
 
     Plugin 'guns/vim-sexp'
+
+    Plugin 'nelstrom/vim-markdown-folding'
+    let g:markdown_fold_style = 'nested'
 " }
 
 " General {
@@ -159,9 +170,6 @@ call vundle#rc()
     nnoremap <F9> :set invpaste paste?<CR>
     set pastetoggle=<F9>
 
-    " sudo write
-    cmap w!! w !sudo tee > /dev/null %
-
     " easier omni-complete
     imap <C-Space> <C-X><C-O>
 
@@ -172,36 +180,7 @@ call vundle#rc()
     nmap <leader>eb :%Eval<CR>
 
     " focus mode
-    function! ToggleFocusMode()
-      if (&foldcolumn != 12)
-        set laststatus=0
-        set numberwidth=10
-        set foldcolumn=12
-        set noruler
-        set nonumber
-        set guifont=Helvetica:h16
-        hi FoldColumn ctermbg=none
-        hi LineNr ctermfg=0 ctermbg=none
-        hi NonText ctermfg=0
-      else
-        set laststatus=2
-        set numberwidth=4
-        set foldcolumn=0
-        set ruler
-        set number
-        set guifont=Consolas:h10
-        execute 'colorscheme ' . g:colors_name
-      endif
-    endfunc
-
-    nnoremap <F1> :call ToggleFocusMode()<cr>
-
-    " REPL evaluation
-    map <Leader>s :SlimuxREPLSendLine<CR>
-    vmap <Leader>s :SlimuxREPLSendSelection<CR>
-    map <Leader>a :SlimuxShellLast<CR>
-    map <Leader>k :SlimuxSendKeysLast<CR>
-    map <Leader>S :%SlimuxREPLSendSelection<CR>
+    nnoremap <silent> <leader>z :Goyo<cr>
 
     " cyrillic langmap
     set langmap =Ч~,ЯQ,ВW,ЕE,РR,ТT,ЪY,УU,ИI,ОO,ПP,Ш{,Щ},АA,СS,ДD,ФF,ГG,ХH,ЙJ,КK,ЛL,ЗZ,ЬZ,ЦC,ЖV,БB,НN,МM,ч`,яq,вw,еe,рr,тt,ъy,уu,иi,оo,пp,ш[,щ],аa,сs,дd,фf,гg,хh,йj,кk,лl,зz,ьz,цc,жv,бb,нn,мm
@@ -252,5 +231,7 @@ endif
     au BufRead,BufNewFile *.html    setlocal filetype=html.javascript
     autocmd BufReadPost *cshtml set filetype=html
     autocmd BufReadPost Jakefile set filetype=javascript
+    autocmd BufReadPost *.md set filetype=markdown
+    autocmd BufReadPost *.md set foldlevel=2
 " }
 
