@@ -38,8 +38,12 @@ call vundle#rc()
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
     let g:syntastic_javascript_checkers = ["jshint"]
+    let g:syntastic_scss_checkers = ["scss_lint"]
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 1
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_error_symbol = "✗"
+    let g:syntastic_warning_symbol = "⚠"
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'marijnh/tern_for_vim'
@@ -86,7 +90,6 @@ call vundle#rc()
     if executable('ag')
        let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
        set grepprg=ag\ --nogroup\ --nocolor
-       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     endif
 
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
@@ -115,6 +118,7 @@ call vundle#rc()
     set incsearch
     set showmatch
     set hlsearch
+    set wrapscan
 
     " avoid swap, temp and backup files
     set nobackup
