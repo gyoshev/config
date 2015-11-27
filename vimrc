@@ -37,8 +37,10 @@ call vundle#rc()
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
-    let g:syntastic_javascript_checkers = ["jshint"]
-    let g:syntastic_scss_checkers = ["scss_lint"]
+    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_javascript_eslint_exec = 'eslint_d'
+    let g:syntastic_json_checkers = ['jsonlint']
+    let g:syntastic_scss_checkers = ['scss_lint']
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 1
     let g:syntastic_always_populate_loc_list = 1
@@ -237,5 +239,6 @@ endif
     autocmd BufReadPost Jakefile set filetype=javascript
     autocmd BufReadPost *.md set filetype=markdown
     autocmd BufReadPost *.md set foldlevel=2
+    autocmd BufRead,BufEnter,BufNew *.jsx let b:syntastic_checkers = ["eslint"]
 " }
 
