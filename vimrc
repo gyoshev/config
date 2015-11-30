@@ -233,12 +233,12 @@ endif
 
     filetype plugin indent on
 
-    au FileType gitcommit           setlocal spell
-    au BufRead,BufNewFile *.html    setlocal filetype=html.javascript
-    autocmd BufReadPost *cshtml set filetype=html
-    autocmd BufReadPost Jakefile set filetype=javascript
-    autocmd BufReadPost *.md set filetype=markdown
-    autocmd BufReadPost *.md set foldlevel=2
-    autocmd BufRead,BufEnter,BufNew *.jsx let b:syntastic_checkers = ["eslint"]
+    autocmd FileType gitcommit          setlocal spell
+    autocmd FileType jsx                let b:syntastic_checkers = ["eslint"]
+
+    autocmd BufRead,BufNewFile *.cshtml set filetype=html
+    autocmd BufRead,BufNewFile *.md     set filetype=markdown
+    autocmd BufRead,BufNewFile *.md     set foldlevel=2
+    autocmd BufRead,BufNewFile *.json   set filetype=json
 " }
 
