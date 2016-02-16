@@ -12,16 +12,6 @@ set nocompatible
   endif
 " }
 
-" Tern Install {
-  let tern_dir = expand(home_dir . '/.vim/bundle/tern_for_vim', 1)
-  let cwd = getcwd()
-  if !isdirectory(tern_dir . '/node_modules')
-    execute "cd " . tern_dir
-    silent ! npm install
-    execute "cd " . cwd
-  endif
-" }
-
 filetype off
 set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
 let g:snippets_dir='~/.snippets/'
@@ -41,6 +31,7 @@ call vundle#rc()
     let g:syntastic_javascript_eslint_exec = 'eslint_d'
     let g:syntastic_json_checkers = ['jsonlint']
     let g:syntastic_scss_checkers = ['scss_lint']
+    let g:syntastic_python_checkers = ['pylint']
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 1
     let g:syntastic_always_populate_loc_list = 1
@@ -48,7 +39,7 @@ call vundle#rc()
     let g:syntastic_warning_symbol = "⚠"
 
     Plugin 'pangloss/vim-javascript'
-    Plugin 'marijnh/tern_for_vim'
+    Plugin 'kchmck/vim-coffee-script'
     Plugin 'rosenfeld/conque-term'
     Plugin 'mileszs/ack.vim'
 
@@ -103,6 +94,11 @@ call vundle#rc()
     Plugin 'Lokaltog/vim-easymotion'
 
     Plugin 'guns/vim-sexp'
+
+    " TypeScript
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'Shougo/vimproc.vim'
+    Plugin 'Quramy/tsuquyomi'
 
     Plugin 'nelstrom/vim-markdown-folding'
     let g:markdown_fold_style = 'nested'
@@ -235,6 +231,7 @@ endif
 
     autocmd FileType gitcommit          setlocal spell
     autocmd FileType jsx                let b:syntastic_checkers = ["eslint"]
+    autocmd FileType typescript         nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
     autocmd BufRead,BufNewFile *.cshtml set filetype=html
     autocmd BufRead,BufNewFile *.md     set filetype=markdown
