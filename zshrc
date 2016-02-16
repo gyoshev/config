@@ -79,7 +79,7 @@ SAVEHIST=10000
 HISTFILE=~/.history
 setopt APPEND_HISTORY
 
-export PATH=$HOME/.bin:/usr/local/sbin:/usr/local/bin:/home/gyoshev/.gem/ruby/1.9.1/bin:/usr/local/share/npm/bin:$PATH
+export PATH=$HOME/.npm/bin:$HOME/.bin:/usr/local/sbin:/usr/local/bin:/home/gyoshev/.gem/ruby/1.9.1/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
 
 # remap home/end keys that don't work?
@@ -91,7 +91,7 @@ bindkey "^[[5~" beginning-of-history
 bindkey "^[[6~" end-of-history
 
 # optimize ruby startup time
-export RUBY_HEAP_MIN_SLOTS=800000
+export RUBY_GC_HEAP_INIT_SLOTS=800000
 export RUBY_HEAP_FREE_MIN=100000
 export RUBY_HEAP_SLOTS_INCREMENT=300000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
@@ -104,3 +104,5 @@ if which rbenv > /dev/null; then
     export RBENV_ROOT=/usr/local/var/rbenv
     eval "$(rbenv init -)";
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

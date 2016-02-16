@@ -54,4 +54,8 @@ branch_color ()
     echo -ne $color
 }
 
+export PATH=$HOME/.npm/bin:$PATH
+
 PS1='[\[$(branch_color)\]$(parse_git_branch)\[${c_sgr0}\]] \u@\[${c_red}\]\w\[${c_sgr0}\]: '
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
