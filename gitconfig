@@ -71,6 +71,10 @@
     # skip a cherry-pick in progress
     skip-cherry = "!git reset; git cherry-pick --continue"
 
+    # add non-whitespace changes
+    addnw = "!f() { git diff -U0 -w --no-color $@ | git apply --cached --ignore-whitespace --unidiff-zero ; }; f"
+
+
 [core]
     autocrlf = input
     whitespace = cr-at-eol
