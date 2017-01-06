@@ -103,10 +103,3 @@ export RUBY_GC_MALLOC_LIMIT=79000000
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-if which rbenv > /dev/null; then
-    export RBENV_ROOT=/usr/local/var/rbenv
-    eval "$(rbenv init -)";
-fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
