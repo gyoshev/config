@@ -18,7 +18,6 @@ fi
 # Disable suspend on <C+s>
 stty -ixon
 
-term screen-256color
 export PATH=/usr/local/sbin:/usr/local/git/bin:$PATH
 
 c_cyan=`tput setaf 6`

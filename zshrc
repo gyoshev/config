@@ -20,6 +20,10 @@ if [ -n "$DISPLAY" ]; then
      export BROWSER=google-chrome
 fi
 
+if [ "$COLORTERM" = "gnome-terminal" ]; then
+    export TERM=gnome-256color
+fi
+
 _git_remote_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
