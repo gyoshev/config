@@ -6,6 +6,10 @@ alias kgrep="grep -Iir --exclude='*.map' --exclude='*.min.css' --exclude='*.min.
 case `uname -a` in
     *Linux*)
         alias ls='ls --color=auto'
+
+        if [ -e /usr/bin/vimx ]; then
+          alias vim='/usr/bin/vimx';
+        fi
         ;;
     *Darwin*)
         alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"

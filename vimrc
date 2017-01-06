@@ -108,7 +108,7 @@ call vundle#rc()
 " General {
     set hidden
 
-    set clipboard+=unnamed
+    set clipboard=unnamed,unnamedplus
     set encoding=utf-8
 
     " searching
