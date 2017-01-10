@@ -11,7 +11,4 @@ case `uname -a` in
           alias vim='/usr/bin/vimx';
         fi
         ;;
-    *Darwin*)
-        alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-        ;;
 esac
