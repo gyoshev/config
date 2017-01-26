@@ -23,7 +23,15 @@ call vundle#rc()
     Plugin 'Railscasts-Theme-GUIand256color'
     Plugin 'moll/vim-bbye'
     Plugin 'groenewege/vim-less'
-    Plugin 'msanders/snipmate.vim'
+
+    let g:snipMate = get(g:, 'snipMate', {})
+    let g:snipMate.scope_aliases = {}
+    let g:snipMate.scope_aliases['typescript'] = 'typescript,javascript'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
+    Plugin 'honza/vim-snippets'
+
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
