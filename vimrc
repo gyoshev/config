@@ -99,6 +99,12 @@ call vundle#rc()
         autocmd FileType javascript set formatprg=prettier\ --stdin
     endif
 
+    Plugin 'mbbill/undotree'
+    if has("persistent_undo")
+        set undodir=~/.undodir/
+        set undofile
+    endif
+
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -166,6 +172,9 @@ call vundle#rc()
 
     " toggle NerdTree
     noremap <leader>n :NERDTreeToggle<CR>
+
+    " toggle UndoTree
+    nnoremap <leader>u :UndotreeToggle<CR>
 
     " open file from same dir
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
