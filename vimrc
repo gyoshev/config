@@ -49,8 +49,6 @@ call vundle#rc()
     let g:syntastic_typescript_tsc_args = '--experimentalDecorators'
 
     Plugin 'pangloss/vim-javascript'
-    Plugin 'kchmck/vim-coffee-script'
-    Plugin 'rosenfeld/conque-term'
     Plugin 'mileszs/ack.vim'
 
     Plugin 'editorconfig/editorconfig-vim'
@@ -64,11 +62,8 @@ call vundle#rc()
     Plugin 'tpope/vim-unimpaired'
     Plugin 'tpope/vim-surround'
     Plugin 'tpope/vim-ragtag'
-    Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-    Plugin 'tpope/vim-leiningen'
     Plugin 'tpope/vim-projectionist'
     Plugin 'tpope/vim-dispatch'
-    Plugin 'tpope/vim-fireplace'
     Plugin 'tpope/vim-eunuch'
     let g:ragtag_global_maps = 1
 
@@ -180,9 +175,6 @@ call vundle#rc()
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
     map <leader>vsw :vs <C-R>=expand("%:h") . "/" <CR>
 
-    " run tests via jasmine
-    map <leader>t :wa \|! jasmine-node *.spec.js --noColor <CR>
-
     " indent!
     nnoremap <Tab> >>
     nnoremap <S-Tab> <<
@@ -215,7 +207,7 @@ if has("python")
 python << EOL
 import vim
 def EvaluateCurrentRange():
-    eval(compile('\n'.join(vim.current.range),'','exec'),globals())
+    eval(compile('\n'.join(vim.current.range).strip(),'','exec'),globals())
 EOL
 
     map <C-h> :py EvaluateCurrentRange()<CR>
