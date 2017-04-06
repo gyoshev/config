@@ -8,9 +8,11 @@
 [difftool]
     prompt = false
 [merge]
-    tool = fugitive
+    tool = meld
 [mergetool "fugitive"]
     cmd = vim -c \"Gdiff\" \"$MERGED\"
+[mergetool "meld"]
+    cmd = meld --diff \"$BASE\" \"$LOCAL\" \"$REMOTE\" --output \"$MERGED\"
 [mergetool]
     keepBackup = false
 [alias]
@@ -28,6 +30,7 @@
     st = status
     out = log origin..HEAD
     l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)%an%Creset' --abbrev-commit --date=relative
+    rcont = rebase --continue
 
     # pull --rebase, and preserve merge commits
     pl = "!f() { git fetch --prune; git rebase --preserve-merges `git tracked` ; }; f"
@@ -77,7 +80,6 @@
 
 [core]
     autocrlf = input
-    whitespace = cr-at-eol
 [push]
     default = tracking
 [branch]

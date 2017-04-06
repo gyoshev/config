@@ -83,7 +83,7 @@ SAVEHIST=10000
 HISTFILE=~/.history
 setopt APPEND_HISTORY
 
-export PATH=$HOME/.npm/bin:$HOME/.bin:/usr/local/sbin:/usr/local/bin:/home/gyoshev/.gem/ruby/1.9.1/bin:$PATH
+export PATH=$HOME/.npm/bin:$HOME/.bin:/usr/local/sbin:/usr/local/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
 
 # remap home/end keys that don't work?
@@ -93,13 +93,3 @@ bindkey "^[[3~" delete-char
 bindkey "^[[4~" end-of-line
 bindkey "^[[5~" beginning-of-history
 bindkey "^[[6~" end-of-history
-
-# optimize ruby startup time
-export RUBY_GC_HEAP_INIT_SLOTS=800000
-export RUBY_HEAP_FREE_MIN=100000
-export RUBY_HEAP_SLOTS_INCREMENT=300000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=79000000
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"

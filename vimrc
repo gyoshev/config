@@ -45,7 +45,8 @@ call vundle#rc()
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_error_symbol = "✗"
     let g:syntastic_warning_symbol = "⚠"
-    let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
+    let g:syntastic_typescript_checkers = ['tslint', 'tsc']
+    let g:syntastic_typescript_tsc_args = '--experimentalDecorators'
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'kchmck/vim-coffee-script'
@@ -94,6 +95,10 @@ call vundle#rc()
        set grepprg=ag\ --nogroup\ --nocolor
     endif
 
+    if executable('prettier')
+        autocmd FileType javascript set formatprg=prettier\ --stdin
+    endif
+
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -103,6 +108,7 @@ call vundle#rc()
     Plugin 'Lokaltog/vim-easymotion'
 
     Plugin 'guns/vim-sexp'
+    Plugin 'tmhedberg/matchit'
 
     " TypeScript
     Plugin 'leafgarland/typescript-vim'
