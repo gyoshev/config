@@ -67,7 +67,7 @@ call vundle#rc()
     Plugin 'tpope/vim-eunuch'
     let g:ragtag_global_maps = 1
 
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
 
     " show last mode
     let g:ctrlp_cmd = 'call CallCtrlP()'
@@ -111,6 +111,8 @@ call vundle#rc()
     Plugin 'guns/vim-sexp'
     Plugin 'tmhedberg/matchit'
 
+    Plugin 'ervandew/supertab.git'
+
     " TypeScript
     Plugin 'leafgarland/typescript-vim'
     Plugin 'Shougo/vimproc.vim'
@@ -118,6 +120,27 @@ call vundle#rc()
 
     Plugin 'nelstrom/vim-markdown-folding'
     let g:markdown_fold_style = 'nested'
+
+    if executable('stack')
+        " Haskell
+        Plugin 'eagletmt/ghcmod-vim.git'
+        Plugin 'eagletmt/neco-ghc'
+        Plugin 'MarcWeber/vim-addon-mw-utils.git'
+        Plugin 'godlygeek/tabular.git'
+        Plugin 'Shougo/neocomplete.vim.git'
+
+        Plugin 'haskell.vim'
+        Plugin 'cabal.vim'
+
+        if !executable('hlint')
+            execute "! stack install hlint ghc-mod"
+        endif
+
+        map <silent> tw :GhcModTypeInsert<CR>
+        map <silent> ts :GhcModSplitFunCase<CR>
+        map <silent> tq :GhcModType<CR>
+        map <silent> te :GhcModTypeClear<CR>
+    endif
 " }
 
 " General {
@@ -213,6 +236,17 @@ EOL
 
     map <C-h> :py EvaluateCurrentRange()<CR>
 endif
+
+    " supertab
+    let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+    if has("gui_running")
+      imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+    else " no gui
+      if has("unix")
+        inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+      endif
+    endif
 " }
 
 " Coding {
@@ -249,6 +283,9 @@ endif
     autocmd FileType gitcommit          setlocal spell
     autocmd FileType jsx                let b:syntastic_checkers = ["eslint"]
     autocmd FileType typescript         nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+    let g:haskellmode_completion_ghc = 1
+    autocmd FileType haskell            setlocal omnifunc=necoghc#omnifunc
 
     autocmd BufRead,BufNewFile *.cshtml set filetype=html
     autocmd BufRead,BufNewFile *.md     set filetype=markdown

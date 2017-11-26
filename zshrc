@@ -83,7 +83,7 @@ SAVEHIST=10000
 HISTFILE=~/.history
 setopt APPEND_HISTORY
 
-export PATH=$HOME/.npm/bin:$HOME/.bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/.npm/bin:$HOME/.bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
 
 # remap home/end keys that don't work?
