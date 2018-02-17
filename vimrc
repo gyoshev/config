@@ -50,6 +50,7 @@ call vundle#rc()
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'mileszs/ack.vim'
+    Plugin 'dyng/ctrlsf.vim'
 
     Plugin 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -125,7 +126,6 @@ call vundle#rc()
         " Haskell
         Plugin 'eagletmt/ghcmod-vim.git'
         Plugin 'eagletmt/neco-ghc'
-        Plugin 'MarcWeber/vim-addon-mw-utils.git'
         Plugin 'godlygeek/tabular.git'
         Plugin 'Shougo/neocomplete.vim.git'
 
@@ -136,10 +136,11 @@ call vundle#rc()
             execute "! stack install hlint ghc-mod"
         endif
 
-        map <silent> tw :GhcModTypeInsert<CR>
-        map <silent> ts :GhcModSplitFunCase<CR>
-        map <silent> tq :GhcModType<CR>
-        map <silent> te :GhcModTypeClear<CR>
+        map <silent> <leader>ht :GhcModType<CR>
+        map <silent> <leader>hi :GhcModTypeInsert<CR>
+        map <silent> <leader>hc :GhcModTypeClear<CR>
+        map <silent> <leader>hs :GhcModSplitFunCase<CR>
+        map <silent> <leader>hc :GhcModCheck<CR>
     endif
 " }
 
