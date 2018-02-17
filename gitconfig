@@ -79,7 +79,7 @@
 
 
 [core]
-    autocrlf = input
+    autocrlf = false
 [push]
     default = tracking
 [branch]
