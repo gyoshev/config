@@ -223,7 +223,7 @@ call vundle#rc()
     nmap <leader>eb :%Eval<CR>
 
     " focus mode
-    nnoremap <silent> <leader>z :Goyo<cr>
+    nnoremap <silent> <leader>z :Goyo<cr>:set linebreak<cr>
 
     " cyrillic langmap
     set langmap =Ч~,ЯQ,ВW,ЕE,РR,ТT,ЪY,УU,ИI,ОO,ПP,Ш{,Щ},АA,СS,ДD,ФF,ГG,ХH,ЙJ,КK,ЛL,ЗZ,ЬZ,ЦC,ЖV,БB,НN,МM,ч`,яq,вw,еe,рr,тt,ъy,уu,иi,оo,пp,ш[,щ],аa,сs,дd,фf,гg,хh,йj,кk,лl,зz,ьz,цc,жv,бb,нn,мm
@@ -281,16 +281,19 @@ endif
 
     filetype plugin indent on
 
-    autocmd FileType gitcommit          setlocal spell
-    autocmd FileType jsx                let b:syntastic_checkers = ["eslint"]
-    autocmd FileType typescript         nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-
-    let g:haskellmode_completion_ghc = 1
-    autocmd FileType haskell            setlocal omnifunc=necoghc#omnifunc
-
     autocmd BufRead,BufNewFile *.cshtml set filetype=html
     autocmd BufRead,BufNewFile *.md     set filetype=markdown
     autocmd BufRead,BufNewFile *.md     set foldlevel=2
     autocmd BufRead,BufNewFile *.json   set filetype=json
+
+    autocmd FileType gitcommit          setlocal spell
+    autocmd FileType jsx                let b:syntastic_checkers = ["eslint"]
+    autocmd FileType typescript         nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+    autocmd FileType markdown           setlocal linebreak
+    autocmd FileType markdown           nmap j gj
+    autocmd FileType markdown           nmap k gk
+
+    let g:haskellmode_completion_ghc = 1
+    autocmd FileType haskell            setlocal omnifunc=necoghc#omnifunc
 " }
 
