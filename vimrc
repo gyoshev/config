@@ -45,12 +45,13 @@ call vundle#rc()
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_error_symbol = "✗"
     let g:syntastic_warning_symbol = "⚠"
-    let g:syntastic_typescript_checkers = ['tslint', 'tsc']
+    let g:syntastic_typescript_checkers = [] " ['tslint', 'tsc']
     let g:syntastic_typescript_tsc_args = '--experimentalDecorators'
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'mileszs/ack.vim'
     Plugin 'dyng/ctrlsf.vim'
+    Plugin 'terryma/vim-multiple-cursors'
 
     Plugin 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -69,19 +70,7 @@ call vundle#rc()
     let g:ragtag_global_maps = 1
 
     Plugin 'ctrlpvim/ctrlp.vim'
-
-    " show last mode
-    let g:ctrlp_cmd = 'call CallCtrlP()'
-
-    func! CallCtrlP()
-        " use mru as first ctrlp mode
-        if exists('s:called_ctrlp')
-            CtrlPLastMode
-        else
-            let s:called_ctrlp = 1
-            CtrlPMRU
-        endif
-    endfunc
+    let g:ctrlp_cmd = 'CtrlPMRU'
 
     Plugin 'junegunn/goyo.vim'
 
@@ -117,7 +106,7 @@ call vundle#rc()
     " TypeScript
     Plugin 'leafgarland/typescript-vim'
     Plugin 'Shougo/vimproc.vim'
-    Plugin 'Quramy/tsuquyomi'
+    "Plugin 'Quramy/tsuquyomi'
 
     Plugin 'nelstrom/vim-markdown-folding'
     let g:markdown_fold_style = 'nested'
@@ -196,6 +185,11 @@ call vundle#rc()
     " toggle UndoTree
     nnoremap <leader>u :UndotreeToggle<CR>
 
+    " ctrlsf map
+    nmap     <leader>f <Plug>CtrlSFPrompt
+    vmap     <leader>f <Plug>CtrlSFVwordPath
+    vmap     <leader>F <Plug>CtrlSFVwordExec
+
     " open file from same dir
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
     map <leader>vsw :vs <C-R>=expand("%:h") . "/" <CR>
@@ -212,6 +206,9 @@ call vundle#rc()
     " toggle paste
     nnoremap <F9> :set invpaste paste?<CR>
     set pastetoggle=<F9>
+
+    " local replace
+    vnoremap <C-r> "hy:%s/<C-r>h//c<left><left>
 
     " easier omni-complete
     imap <C-Space> <C-X><C-O>
@@ -251,7 +248,6 @@ endif
 " }
 
 " Coding {
-    set iskeyword+=_,$,@,%,#
     set guifont=Consolas:h10
     set number
     syntax on
