@@ -1,6 +1,7 @@
 [user]
     name = Alex Gyoshev
     email = alex@gyoshev.net
+    signingkey = 39AB9080
 [color]
     ui = true
 [diff]
@@ -86,3 +87,4 @@
     autosetuprebase = always
 [commit]
     template = ~/.gitmessage
+    gpgsign = true
