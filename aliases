@@ -1,5 +1,5 @@
 alias g="git"
-alias ll="ls -l"
+alias ll="ls -lh"
 alias tmux="tmux -2"
 alias kgrep="grep -Iir --exclude='*.map' --exclude='*.min.css' --exclude='*.min.js' --exclude='kendo.all.js' --exclude='kendo.winjs.js' --exclude='*.web.*' --exclude='*.mobile.js' --exclude='kendo.editor.js' --exclude='kendo.dataviz.js'"
 
