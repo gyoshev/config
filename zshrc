@@ -83,6 +83,10 @@ SAVEHIST=10000
 HISTFILE=~/.history
 setopt APPEND_HISTORY
 
+if [ -e "$HOME/.cargo/bin" ]; then
+  export PATH=$HOME/.cargo/bin:$PATH
+fi
+
 export PATH=$HOME/.npm/bin:$HOME/.bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
 

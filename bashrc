@@ -9,6 +9,10 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
+if [ -e "$HOME/.cargo/bin" ]; then
+  export PATH=$HOME/.cargo/bin:$PATH
+fi
+
 if [[ $OSTYPE == 'msys' ]]; then
   eval `ssh-agent`
   ssh-add
