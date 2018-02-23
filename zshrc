@@ -12,7 +12,7 @@ setopt prompt_subst
 
 # prompt
 source ~/.zsh/git-prompt/zshrc.sh
-export PS1='%{$fg_bold[blue]%}(~)%{$reset_color%} '
+export PS1='%{$fg_bold[blue]%}(%{$fg_bold[white]%}λ%{$fg_bold[blue]%})%{$reset_color%} '
 export RPROMPT='${SSH_CONNECTION+"%{$fg_bold[green]%}"}%{$fg_bold[white]%}%~%{$reset_color%} -- $(git_super_status)'
 
 
