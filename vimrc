@@ -48,6 +48,8 @@ call vundle#rc()
     let g:syntastic_typescript_checkers = [] " ['tslint', 'tsc']
     let g:syntastic_typescript_tsc_args = '--experimentalDecorators'
 
+    Plugin 'vale1410/vim-minizinc'
+
     Plugin 'pangloss/vim-javascript'
     Plugin 'mileszs/ack.vim'
     Plugin 'dyng/ctrlsf.vim'
@@ -208,7 +210,7 @@ call vundle#rc()
     set pastetoggle=<F9>
 
     " local replace
-    vnoremap <C-r> "hy:%s/<C-r>h//c<left><left>
+    vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
     " easier omni-complete
     imap <C-Space> <C-X><C-O>
