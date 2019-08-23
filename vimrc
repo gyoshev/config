@@ -15,10 +15,21 @@ set nocompatible
 filetype off
 set rtp=~/.vim/bundle/vundle/,~/.vim,$VIMRUNTIME
 let g:snippets_dir='~/.snippets/'
-call vundle#rc()
 
 " Plugins {
+    call vundle#begin()
     Plugin 'gmarik/vundle'
+
+    " use rg/ag if available
+    if executable('rg')
+       let g:ctrlsf_ackprg = 'rg'
+       let g:ackprg = 'rg --color=never --column --smart-case'
+       let g:ctrlp_user_command = 'rg %s -l --color=never -g ""'
+    elseif executable('ag')
+       let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+       set grepprg=ag\ --nogroup\ --nocolor
+       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    endif
 
     Plugin 'Railscasts-Theme-GUIand256color'
     Plugin 'moll/vim-bbye'
@@ -52,15 +63,21 @@ call vundle#rc()
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'mileszs/ack.vim'
+    let g:ctrlsf_auto_focus = { "at": "start" }
+    let g:ctrlsf_mapping = {
+      \ "next": "n",
+      \ "prev": "N",
+      \ "vsplit": "s",
+    \ }
     Plugin 'dyng/ctrlsf.vim'
-    Plugin 'terryma/vim-multiple-cursors'
 
     Plugin 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
     Plugin 'mattn/emmet-vim'
 
-    " tpope is an icon!
+    Plugin 'posva/vim-vue'
+
     Plugin 'tpope/vim-fugitive'
     Plugin 'tpope/vim-git'
     Plugin 'tpope/vim-unimpaired'
@@ -69,18 +86,16 @@ call vundle#rc()
     Plugin 'tpope/vim-projectionist'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-eunuch'
+    Plugin 'tpope/vim-rhubarb'
     let g:ragtag_global_maps = 1
 
     Plugin 'ctrlpvim/ctrlp.vim'
+    let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
     let g:ctrlp_cmd = 'CtrlPMRU'
 
+    Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plugin 'junegunn/fzf.vim'
     Plugin 'junegunn/goyo.vim'
-
-    " use ag if available
-    if executable('ag')
-       let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-       set grepprg=ag\ --nogroup\ --nocolor
-    endif
 
     if executable('prettier')
         autocmd FileType javascript set formatprg=prettier\ --stdin
@@ -108,7 +123,7 @@ call vundle#rc()
     " TypeScript
     Plugin 'leafgarland/typescript-vim'
     Plugin 'Shougo/vimproc.vim'
-    "Plugin 'Quramy/tsuquyomi'
+    Plugin 'Quramy/tsuquyomi'
 
     Plugin 'nelstrom/vim-markdown-folding'
     let g:markdown_fold_style = 'nested'
@@ -133,6 +148,7 @@ call vundle#rc()
         map <silent> <leader>hs :GhcModSplitFunCase<CR>
         map <silent> <leader>hc :GhcModCheck<CR>
     endif
+    call vundle#end()
 " }
 
 " General {
@@ -182,7 +198,9 @@ call vundle#rc()
     nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
     " toggle NerdTree
-    noremap <leader>n :NERDTreeToggle<CR>
+    noremap <leader>n<Space> :NERDTreeToggle<CR>
+    noremap <leader>nf :NERDTreeFind<CR>
+    noremap <leader>nr :NERDTreeRefreshRoot<CR>
 
     " toggle UndoTree
     nnoremap <leader>u :UndotreeToggle<CR>
@@ -191,6 +209,7 @@ call vundle#rc()
     nmap     <leader>f <Plug>CtrlSFPrompt
     vmap     <leader>f <Plug>CtrlSFVwordPath
     vmap     <leader>F <Plug>CtrlSFVwordExec
+    nnoremap R :CtrlSF <C-R><C-W> -R -W<CR>
 
     " open file from same dir
     map <leader>ew :e <C-R>=expand("%:h") . "/" <CR>
@@ -201,6 +220,10 @@ call vundle#rc()
     nnoremap <S-Tab> <<
     vnoremap <Tab> >gv
     vnoremap <S-Tab> <gv
+
+    " forward-back in history
+    noremap ( <C-o>
+    noremap ) <C-i>
 
     " toggle spell
     nnoremap <F8> :setlocal spell! spell?<CR>
@@ -255,7 +278,6 @@ endif
     syntax on
 
     silent! colorscheme railscasts
-    autocmd BufEnter * :syntax sync fromstart
 
     " show trailing whitespace
     set list listchars=tab:>-,trail:.
