@@ -1,7 +1,7 @@
 [user]
     name = Alex Gyoshev
-    email = alex@gyoshev.net
-    signingkey = 39AB9080
+    email = aleksander.gyoshev@leanplum.com
+    signingkey = 96174D3CD53476C5
 [color]
     ui = true
 [diff]
@@ -46,9 +46,6 @@
     # cherry-pick from current to ....
     cp2 = "!f() { git cpf2 `git current` $1 ; }; f"
 
-    # cherry-pick from master to production
-    cpp = "!f() { git cpf2 master production ; }; f"
-
     # edit / add unmerged files
     eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
@@ -56,27 +53,14 @@
     # show parent (mommy) branch
     mom = "!git show-branch | ack '\\*' | ack -v \"`git current`\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//'"
 
-    #############################
-    # public/private mirrors aliases
-    #############################
-
-    # bring commits from public repo to private
-    put-in-master = "!git checkout master && git pull --rebase && git cherry-pick core/master && git push && git checkout core-master"
-
     # drop cherry-picks of private files
     drop-deleted-by-us = "!git rm `git status --porcelain | grep ^DU | cut -d' ' -f2`"
 
-    # update private marker after all commits are ported from public to private
-    updated-core-tag = "!git tag -f r-private core/master && git push -f core r-private;"
-
-    # update public marker after all commits are ported from private to public
-    updated-master-tag = "!git tag -f r-public origin/master && git push -f origin r-public;"
-
-    # skip a cherry-pick in progress
-    skip-cherry = "!git reset; git cherry-pick --continue"
-
     # add non-whitespace changes
     addnw = "!f() { git diff -U0 -w --no-color $@ | git apply --cached --ignore-whitespace --unidiff-zero ; }; f"
+
+    # remove branches with gone upstreams
+    clean-gone-branches = "!f() { git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D ; }; f"
 
 
 [core]
@@ -90,3 +74,8 @@
     gpgsign = true
 [gpg]
     program = gpg2
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
