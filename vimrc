@@ -205,6 +205,9 @@ let g:snippets_dir='~/.snippets/'
     " toggle UndoTree
     nnoremap <leader>u :UndotreeToggle<CR>
 
+    " fzf
+    nnoremap <C-f> :FZF<CR>
+
     " ctrlsf map
     nmap     <leader>f <Plug>CtrlSFPrompt
     vmap     <leader>f <Plug>CtrlSFVwordPath
