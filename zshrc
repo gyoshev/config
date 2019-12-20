@@ -89,11 +89,3 @@ fi
 
 export PATH=$HOME/.npm/bin:$HOME/.bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
-
-# remap home/end keys that don't work?
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[2~" quoted-insert
-bindkey "^[[3~" delete-char
-bindkey "^[[4~" end-of-line
-bindkey "^[[5~" beginning-of-history
-bindkey "^[[6~" end-of-history
