@@ -13,13 +13,17 @@ brew "nvm"
 brew "yarn"
 brew "protobuf"
 brew "ripgrep"
+brew "fzf"
 brew "java"
 brew "maven"
- 
-cask "google-cloud-sdk"
+
 cask "spectacle"
 cask "iterm2"
 cask "keybase"
 cask "slack"
 cask "karabiner-elements"
+
+cask "docker"
+cask "google-cloud-sdk"
+cask "intellij-idea-ce"
 EOF
