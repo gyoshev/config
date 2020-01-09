@@ -33,3 +33,9 @@ for name in *; do
     fi
   fi
 done
+
+# install vim plugins
+vim +BundleInstall +qall
+
+# build vimproc
+(cd "$HOME/.vim/bundle/vimproc.vim" && make)
