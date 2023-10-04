@@ -34,6 +34,8 @@ for name in *; do
   fi
 done
 
+cp iterm/*.ttf ~/Library/Fonts/
+
 # install vim plugins
 vim +BundleInstall +qall
 
