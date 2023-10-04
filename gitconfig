@@ -1,7 +1,7 @@
 [user]
     name = Alex Gyoshev
     email = aleksander.gyoshev@leanplum.com
-    signingkey = 96174D3CD53476C5
+    #signingkey = 96174D3CD53476C5
 [color]
     ui = true
 [diff]
@@ -34,7 +34,7 @@
     rcont = rebase --continue
 
     # pull --rebase, and preserve merge commits
-    pl = "!f() { git fetch --prune; git rebase --preserve-merges `git tracked` ; }; f"
+    pl = "!f() { git fetch --prune; git rebase --rebase-merges `git tracked` ; }; f"
 
     sync = "!f() { git pl && git push ; }; f"
 
@@ -51,7 +51,7 @@
     au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
     # show parent (mommy) branch
-    mom = "!git show-branch | ack '\\*' | ack -v \"`git current`\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//'"
+    mom = "!git show-branch | rg '\\*' | rg -v \"`git current`\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//'"
 
     # drop cherry-picks of private files
     drop-deleted-by-us = "!git rm `git status --porcelain | grep ^DU | cut -d' ' -f2`"
@@ -71,11 +71,32 @@
     autosetuprebase = always
 [commit]
     template = ~/.gitmessage
-    gpgsign = true
+    #gpgsign = true
 [gpg]
     program = gpg2
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+[init]
+	defaultBranch = main
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax

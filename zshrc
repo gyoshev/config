@@ -10,44 +10,13 @@ export CLICOLOR=1
 # expand functions in the prompt
 setopt prompt_subst
 
-# prompt
-source ~/.zsh/git-prompt/zshrc.sh
-export PS1='%{$fg_bold[blue]%}(%{$fg_bold[white]%}λ%{$fg_bold[blue]%})%{$reset_color%} '
-export RPROMPT='${SSH_CONNECTION+"%{$fg_bold[green]%}"}%{$fg_bold[white]%}%~%{$reset_color%} -- $(git_super_status)'
-
-
 if [ -n "$DISPLAY" ]; then
-     export BROWSER=google-chrome
+    export BROWSER=google-chrome
 fi
 
 if [ "$COLORTERM" = "gnome-terminal" ]; then
     export TERM=gnome-256color
 fi
-
-_git_remote_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    if (( CURRENT == 2 )); then
-      # first arg: operation
-      compadd create publish rename delete track
-    elif (( CURRENT == 3 )); then
-      if [[ $words[2] == "publish" ]]; then
-        # second arg: local branch name
-        compadd `git branch -l | sed "s/[ \*]//g"`
-      else;
-        # second arg: remote branch name
-        compadd `git branch -r | grep -v HEAD | sed "s/.*\///" | sed "s/ //g"`
-      fi
-    elif (( CURRENT == 4 )); then
-      # third arg: remote name
-      compadd `git remote`
-    fi
-  else;
-    _files
-  fi
-}
-
-compctl -K _git_remote_branch grb
 
 stty -ixon
 
@@ -89,3 +58,12 @@ fi
 
 export PATH=$HOME/.npm/bin:$HOME/.bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+source /Users/gyoshev/.docker/init-zsh.sh || true # Added by Docker Desktop
+export PATH="/usr/local/opt/php@8.1/bin:$PATH"
+export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
+export PATH="/usr/local/opt/node@18/bin:$PATH"
+
+eval "$(starship init zsh)"

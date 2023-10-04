@@ -31,40 +31,22 @@ let g:snippets_dir='~/.snippets/'
        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     endif
 
-    Plugin 'Railscasts-Theme-GUIand256color'
+    Plugin 'morhetz/gruvbox'
     Plugin 'moll/vim-bbye'
     Plugin 'groenewege/vim-less'
 
-    let g:snipMate = get(g:, 'snipMate', {})
-    let g:snipMate.scope_aliases = {}
-    let g:snipMate.scope_aliases['typescript'] = 'typescript,javascript'
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
     Plugin 'honza/vim-snippets'
 
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/syntastic'
-    let g:syntastic_javascript_checkers = ['eslint']
-    let g:syntastic_javascript_eslint_exec = 'eslint_d'
-    let g:syntastic_json_checkers = ['jsonlint']
-    let g:syntastic_scss_checkers = ['scss_lint']
-    let g:syntastic_python_checkers = ['pylint']
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 1
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_error_symbol = "✗"
-    let g:syntastic_warning_symbol = "⚠"
-    let g:syntastic_typescript_checkers = [] " ['tslint', 'tsc']
-    let g:syntastic_typescript_tsc_args = '--experimentalDecorators'
-
-    Plugin 'vale1410/vim-minizinc'
 
     Plugin 'pangloss/vim-javascript'
     Plugin 'mileszs/ack.vim'
     let g:ctrlsf_auto_focus = { "at": "start" }
     let g:ctrlsf_mapping = {
+      \ "quit": "q",
       \ "next": "n",
       \ "prev": "N",
       \ "vsplit": "s",
@@ -118,13 +100,19 @@ let g:snippets_dir='~/.snippets/'
     Plugin 'guns/vim-sexp'
     Plugin 'tmhedberg/matchit'
 
-    Plugin 'ervandew/supertab.git'
-
     " TypeScript
     Plugin 'leafgarland/typescript-vim'
     Plugin 'Shougo/vimproc.vim'
-    Plugin 'Quramy/tsuquyomi'
 
+    Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+    let g:coc_global_extensions = [ 'coc-tsserver', 'coc-java', 'coc-snippets' ]
+
+    if executable('rustc')
+        " Rust
+        Plugin 'rust-lang/rust.vim'
+    endif
+
+    " Markdown
     Plugin 'nelstrom/vim-markdown-folding'
     let g:markdown_fold_style = 'nested'
 
@@ -154,9 +142,12 @@ let g:snippets_dir='~/.snippets/'
 " General {
     set hidden
 
-    set clipboard^=unnamed,unnamedplus
+    set clipboard=unnamedplus,unnamed
 
     set encoding=utf-8
+
+    let g:gruvbox_contrast_dark = 'hard'
+    colorscheme gruvbox
 
     " searching
     set ignorecase
@@ -182,6 +173,7 @@ let g:snippets_dir='~/.snippets/'
     set t_Co=256
     set mouse=a
     set ttymouse=xterm2
+    set updatetime=300
 " }
 
 " Keyboard {
@@ -238,8 +230,29 @@ let g:snippets_dir='~/.snippets/'
     " local replace
     vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-    " easier omni-complete
-    imap <C-Space> <C-X><C-O>
+    nmap <leader>rn  <Plug>(coc-rename)
+    nmap <leader>cx  <Plug>(coc-codeaction)
+    nmap <leader>cf  <Plug>(coc-fix-current)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> <c-j> <Plug>(coc-diagnostic-prev)
+    nmap <silent> <c-k> <Plug>(coc-diagnostic-next)
+
+    nmap <leader>b   :Git blame<CR>
+
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? coc#_select_confirm() :
+          \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+    let g:coc_snippet_next = '<tab>'
 
     " close buffer
     nmap <leader>q :Bdelete<CR>
@@ -253,6 +266,8 @@ let g:snippets_dir='~/.snippets/'
     " cyrillic langmap
     set langmap =Ч~,ЯQ,ВW,ЕE,РR,ТT,ЪY,УU,ИI,ОO,ПP,Ш{,Щ},АA,СS,ДD,ФF,ГG,ХH,ЙJ,КK,ЛL,ЗZ,ЬZ,ЦC,ЖV,БB,НN,МM,ч`,яq,вw,еe,рr,тt,ъy,уu,иi,оo,пp,ш[,щ],аa,сs,дd,фf,гg,хh,йj,кk,лl,зz,ьx,цc,жv,бb,нn,мm
 
+    inoremap ¬ <C-K>*l
+
 if has("python")
 python << EOL
 import vim
@@ -262,25 +277,12 @@ EOL
 
     map <C-h> :py EvaluateCurrentRange()<CR>
 endif
-
-    " supertab
-    let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-
-    if has("gui_running")
-      imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-    else " no gui
-      if has("unix")
-        inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-      endif
-    endif
 " }
 
 " Coding {
     set guifont=Consolas:h10
     set number
     syntax on
-
-    silent! colorscheme railscasts
 
     " show trailing whitespace
     set list listchars=tab:>-,trail:.
@@ -310,8 +312,6 @@ endif
     autocmd BufRead,BufNewFile *.json   set filetype=json
 
     autocmd FileType gitcommit          setlocal spell
-    autocmd FileType jsx                let b:syntastic_checkers = ["eslint"]
-    autocmd FileType typescript         nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
     autocmd FileType markdown           setlocal linebreak
     autocmd FileType markdown           nmap j gj
     autocmd FileType markdown           nmap k gk
