@@ -1,29 +1,8 @@
 #!/bin/sh
- 
-brew tap "homebrew/cask-fonts"
-brew tap "homebrew/cask-versions"
- 
 brew bundle --file=- <<EOF
 brew "git"
-brew "git-lfs"
 brew "shellcheck"
-brew "redis"
-brew "python2"
-brew "nvm"
 brew "yarn"
-brew "protobuf"
 brew "ripgrep"
 brew "fzf"
-brew "java"
-brew "maven"
-
-cask "spectacle"
-cask "iterm2"
-cask "keybase"
-cask "slack"
-cask "karabiner-elements"
-
-cask "docker"
-cask "google-cloud-sdk"
-cask "intellij-idea-ce"
 EOF

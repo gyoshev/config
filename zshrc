@@ -56,12 +56,9 @@ if [ -e "$HOME/.cargo/bin" ]; then
   export PATH=$HOME/.cargo/bin:$PATH
 fi
 
-export PATH=$HOME/.npm/bin:$HOME/.bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/homebrew/bin:$HOME/.npm/bin:$HOME/.bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export NODE_PATH=/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
-source /Users/gyoshev/.docker/init-zsh.sh || true # Added by Docker Desktop
 export PATH="/usr/local/opt/php@8.1/bin:$PATH"
 export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
 export PATH="/usr/local/opt/node@18/bin:$PATH"

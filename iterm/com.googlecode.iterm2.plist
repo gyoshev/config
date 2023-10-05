@@ -4,16 +4,6 @@
 <dict>
 	<key>AllowClipboardAccess</key>
 	<true/>
-	<key>AppleAntiAliasingThreshold</key>
-	<integer>1</integer>
-	<key>ApplePressAndHoldEnabled</key>
-	<false/>
-	<key>AppleScrollAnimationEnabled</key>
-	<integer>0</integer>
-	<key>AppleSmoothFixedFontsSizeThreshold</key>
-	<integer>1</integer>
-	<key>AppleWindowTabbingMode</key>
-	<string>manual</string>
 	<key>Default Bookmark Guid</key>
 	<string>0613B481-3E35-48FC-ACDC-5AD3983BDEF2</string>
 	<key>HapticFeedbackForEsc</key>
@@ -232,7 +222,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -617,7 +607,7 @@
 			<key>Window Type</key>
 			<integer>15</integer>
 			<key>Working Directory</key>
-			<string>/Users/gyoshev/github/lp</string>
+			<string>/Users/gyoshev/github</string>
 		</dict>
 	</array>
 	<key>PointerActions</key>
