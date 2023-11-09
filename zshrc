@@ -14,9 +14,7 @@ if [ -n "$DISPLAY" ]; then
     export BROWSER=google-chrome
 fi
 
-if [ "$COLORTERM" = "gnome-terminal" ]; then
-    export TERM=gnome-256color
-fi
+export TERM=gnome-256color
 
 stty -ixon
 
