@@ -228,7 +228,7 @@ let g:snippets_dir='~/.snippets/'
     set pastetoggle=<F9>
 
     " local replace
-    vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+    vnoremap <C-r> "hy:%s/\<<C-r>h\>//gc<left><left><left>
 
     nmap <leader>rn  <Plug>(coc-rename)
     nmap <leader>cx  <Plug>(coc-codeaction)
@@ -237,21 +237,18 @@ let g:snippets_dir='~/.snippets/'
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
-    nmap <silent> <c-j> <Plug>(coc-diagnostic-prev)
-    nmap <silent> <c-k> <Plug>(coc-diagnostic-next)
+    nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
+    nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
 
     nmap <leader>b   :Git blame<CR>
 
     inoremap <silent><expr> <TAB>
-          \ pumvisible() ? coc#_select_confirm() :
-          \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#pum#visible() ? coc#pum#confirm() :
+          \ CheckBackspace() ? "\<Tab>" :
           \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    inoremap <silent><expr> <c-@> coc#refresh()
+
     let g:coc_snippet_next = '<tab>'
 
     " close buffer
@@ -266,6 +263,7 @@ let g:snippets_dir='~/.snippets/'
     " cyrillic langmap
     set langmap =Ч~,ЯQ,ВW,ЕE,РR,ТT,ЪY,УU,ИI,ОO,ПP,Ш{,Щ},АA,СS,ДD,ФF,ГG,ХH,ЙJ,КK,ЛL,ЗZ,ЬZ,ЦC,ЖV,БB,НN,МM,ч`,яq,вw,еe,рr,тt,ъy,уu,иi,оo,пp,ш[,щ],аa,сs,дd,фf,гg,хh,йj,кk,лl,зz,ьx,цc,жv,бb,нn,мm
 
+    " λ
     inoremap ¬ <C-K>*l
 
 if has("python")
@@ -275,7 +273,7 @@ def EvaluateCurrentRange():
     eval(compile('\n'.join(vim.current.range).strip(),'','exec'),globals())
 EOL
 
-    map <C-h> :py EvaluateCurrentRange()<CR>
+    map <leader>py :py EvaluateCurrentRange()<CR>
 endif
 " }
 
