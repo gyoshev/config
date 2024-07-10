@@ -282,6 +282,8 @@ endif
     set number
     syntax on
 
+    command FormatJsonFile %!jq
+
     " show trailing whitespace
     set list listchars=tab:>-,trail:.
 
