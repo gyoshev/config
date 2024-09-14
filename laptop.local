@@ -1,8 +1,0 @@
-#!/bin/sh
-brew bundle --file=- <<EOF
-brew "git"
-brew "shellcheck"
-brew "yarn"
-brew "ripgrep"
-brew "fzf"
-EOF

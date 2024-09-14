@@ -36,8 +36,11 @@ done
 
 cp iterm/*.ttf ~/Library/Fonts/
 
+brew bundle --file=./Brewfile
+
 # install vim plugins
 vim +BundleInstall +qall
 
 # build vimproc
 (cd "$HOME/.vim/bundle/vimproc.vim" && make)
+

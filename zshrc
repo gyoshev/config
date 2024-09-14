@@ -25,7 +25,7 @@ compinit
 setopt auto_cd
 
 # use vim as an editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # aliases
 if [ -e "$HOME/.aliases" ]; then
