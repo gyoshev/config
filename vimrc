@@ -172,8 +172,10 @@ let g:snippets_dir='~/.snippets/'
     " terminal settings
     set t_Co=256
     set mouse=a
-    set ttymouse=xterm2
     set updatetime=300
+    if !has('nvim')
+        set ttymouse=xterm2
+    endif
 " }
 
 " Keyboard {
